@@ -1,0 +1,44 @@
+# Vivado Logs and Journals
+*.jou
+*.log
+*.str
+*.pb
+
+# Vivado Project Directories (Generated/Temporary)
+.Xil/
+*.cache/
+*.hw/
+*.sim/
+*.runs/
+*.ip_user_files/
+*.dir/
+
+# Compressed Project Archives
+*.xpr.zip
+
+# Hardware Definition and Handoff Files (If generated dynamically)
+*.xsa
+*.hdf
+
+# Bitstreams and Programming Files (Use Git LFS or GitHub Releases for these)
+*.bit
+*.bin
+*.mcs
+*.prm
+*.ltx
+*.svf
+
+# Design Checkpoints (Can be hundreds of MBs)
+*.dcp
+
+# Vitis / Xilinx SDK (Eclipse-based) 
+.metadata/
+.sdk/
+*.elf
+*.bif
+
+# Backup and Temp Files
+*backup*
+*.bak
+*~
+*.swp
