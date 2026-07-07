@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Sat Apr 18 17:46:01 2026
--- Host        : LENOVO-LOQ-15IRX9 running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/Paulo/Desktop/EE_Masters/EC/NullShiftV2/NullShiftV2.gen/sources_1/bd/fdm/ip/fdm_clk_wiz_0_0/fdm_clk_wiz_0_0_sim_netlist.vhdl
+-- Date        : Sun Apr 26 21:59:21 2026
+-- Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
+-- Command     : write_vhdl -force -mode funcsim -rename_top fdm_clk_wiz_0_0 -prefix
+--               fdm_clk_wiz_0_0_ fdm_clk_wiz_0_0_sim_netlist.vhdl
 -- Design      : fdm_clk_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -15,16 +15,16 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity fdm_clk_wiz_0_0_clk_wiz is
+entity fdm_clk_wiz_0_0_fdm_clk_wiz_0_0_clk_wiz is
   port (
     clk_out1 : out STD_LOGIC;
     reset : in STD_LOGIC;
     locked : out STD_LOGIC;
     clk_in1 : in STD_LOGIC
   );
-end fdm_clk_wiz_0_0_clk_wiz;
+end fdm_clk_wiz_0_0_fdm_clk_wiz_0_0_clk_wiz;
 
-architecture STRUCTURE of fdm_clk_wiz_0_0_clk_wiz is
+architecture STRUCTURE of fdm_clk_wiz_0_0_fdm_clk_wiz_0_0_clk_wiz is
   signal clk_in1_fdm_clk_wiz_0_0 : STD_LOGIC;
   signal clk_out1_fdm_clk_wiz_0_0 : STD_LOGIC;
   signal clkfbout_buf_fdm_clk_wiz_0_0 : STD_LOGIC;
@@ -179,7 +179,7 @@ end fdm_clk_wiz_0_0;
 
 architecture STRUCTURE of fdm_clk_wiz_0_0 is
 begin
-inst: entity work.fdm_clk_wiz_0_0_clk_wiz
+inst: entity work.fdm_clk_wiz_0_0_fdm_clk_wiz_0_0_clk_wiz
      port map (
       clk_in1 => clk_in1,
       clk_out1 => clk_out1,

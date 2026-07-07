@@ -29,7 +29,8 @@
       "fir_compiler_0": "",
       "tvalid_gen": "",
       "c_counter_binary_0": "",
-      "mux_0": ""
+      "mux_0": "",
+      "bin_data_stream_3": ""
     },
     "ports": {
       "sys_clock": {
@@ -224,7 +225,15 @@
         "xci_name": "fdm_dds_compiler_0_0",
         "xci_path": "ip\\fdm_dds_compiler_0_0\\fdm_dds_compiler_0_0.xci",
         "inst_hier_path": "ask_modulator",
-        "has_run_ip_tcl": "true"
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Output_Frequency1": {
+            "value": "5"
+          },
+          "PINC1": {
+            "value": "110011001100110011001100"
+          }
+        }
       },
       "mult_gen_0": {
         "vlnv": "xilinx.com:ip:mult_gen:12.0",
@@ -610,6 +619,37 @@
             "right": "0"
           }
         }
+      },
+      "bin_data_stream_3": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "ip_revision": "12",
+        "xci_name": "fdm_bin_data_stream_1_1",
+        "xci_path": "ip\\fdm_bin_data_stream_1_1\\fdm_bin_data_stream_1_1.xci",
+        "inst_hier_path": "bin_data_stream_3",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Coe_File": {
+            "value": "../../../../../../test.coe"
+          },
+          "Fill_Remaining_Memory_Locations": {
+            "value": "true"
+          },
+          "Load_Init_File": {
+            "value": "true"
+          },
+          "Memory_Type": {
+            "value": "Single_Port_ROM"
+          },
+          "Write_Depth_A": {
+            "value": "16"
+          },
+          "Write_Width_A": {
+            "value": "1"
+          },
+          "use_bram_block": {
+            "value": "Stand_Alone"
+          }
+        }
       }
     },
     "nets": {
@@ -629,7 +669,7 @@
       },
       "bin_data_stream_1_douta": {
         "ports": [
-          "bin_data_stream_1/douta",
+          "bin_data_stream_3/douta",
           "ask_mapper/addra",
           "ila_0/probe0"
         ]
@@ -652,7 +692,8 @@
         "ports": [
           "c_counter_binary_0/Q",
           "bin_data_stream_1/addra",
-          "ila_0/probe12"
+          "ila_0/probe12",
+          "bin_data_stream_3/addra"
         ]
       },
       "clk_wiz_0_clk_out1": {
@@ -674,7 +715,8 @@
           "fir_compiler_0/aclk",
           "tvalid_gen/CLK",
           "c_counter_binary_0/CLK",
-          "mux_0/clk"
+          "mux_0/clk",
+          "bin_data_stream_3/clka"
         ]
       },
       "clk_wiz_0_locked": {
@@ -686,7 +728,8 @@
           "bin_data_stream_2/enb",
           "line_coder/ena",
           "c_addsub_0/CE",
-          "c_counter_binary_0/CE"
+          "c_counter_binary_0/CE",
+          "bin_data_stream_3/ena"
         ]
       },
       "fir_compiler_0_m_axis_data_tdata": {

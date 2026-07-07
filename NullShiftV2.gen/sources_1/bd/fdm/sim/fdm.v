@@ -2,15 +2,15 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Wed Apr 22 22:18:46 2026
-//Host        : LENOVO-LOQ-15IRX9 running 64-bit major release  (build 9200)
+//Date        : Wed Apr 29 01:23:24 2026
+//Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
 //Command     : generate_target fdm.bd
 //Design      : fdm
 //Purpose     : IP block netlist
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=19,numReposBlks=19,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
+(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=20,numReposBlks=20,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
 module fdm
    (reset,
     sel,
@@ -53,7 +53,6 @@ module fdm
   fdm_blk_mem_gen_0_0 bin_data_stream_1
        (.addra(c_counter_binary_0_Q),
         .clka(clk_wiz_0_clk_out1),
-        .douta(bin_data_stream_1_douta),
         .ena(clk_wiz_0_locked));
   fdm_bin_data_stream_1_0 bin_data_stream_2
        (.addra({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}),
@@ -65,6 +64,11 @@ module fdm
         .ena(clk_wiz_0_locked),
         .enb(clk_wiz_0_locked),
         .wea(1'b0));
+  fdm_bin_data_stream_1_1 bin_data_stream_3
+       (.addra(c_counter_binary_0_Q),
+        .clka(clk_wiz_0_clk_out1),
+        .douta(bin_data_stream_1_douta),
+        .ena(clk_wiz_0_locked));
   fdm_c_addsub_0_0 c_addsub_0
        (.A(mult_gen_1_P),
         .B(mult_gen_3_P),
