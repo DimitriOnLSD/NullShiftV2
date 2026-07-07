@@ -58,14 +58,15 @@ begin
         reset <= '0';
         
         -- Wait for PLL lock (clk_wiz_0 takes time to lock)
-        wait for 5 us;
+        -- Plus wait 10us for the first symbol (0) to finish so we test active data!
+        wait for 15 us;
 
         -- TEST 1: Validate 4ASK Baseband Output (sel="000")
         report "Testing 4ASK Raw Output...";
         sel <= "000"; -- ASK Raw
         wait for 1 us;
         test_failed := false;
-        for i in 0 to 50 loop
+        for i in 0 to 7500 loop
             wait until rising_edge(sys_clock);
             val := signed(dac_data_o);
             assert (val = VAL_0 or val = VAL_ASK1 or val = VAL_ASK2 or val = VAL_ASK3)
@@ -86,7 +87,7 @@ begin
         sel <= "001"; -- OOK Raw
         wait for 1 us;
         test_failed := false;
-        for i in 0 to 50 loop
+        for i in 0 to 7500 loop
             wait until rising_edge(sys_clock);
             val := signed(dac_data_o);
             assert (val = VAL_0 or val = VAL_OOK1)
@@ -118,7 +119,7 @@ begin
         else
             report "ASK Modulated Carrier Validated! (AC Signal Verified)";
         end if;
-        wait for 8 us;
+        wait for 60 us;
 
         -- TEST 4: Validate OOK Carrier * Gain Output (sel="011")
         report "Switching to OOK Modulated Carrier (Pre-Adder)...";
@@ -136,7 +137,7 @@ begin
         else
             report "OOK Modulated Carrier Validated! (AC Signal Verified)";
         end if;
-        wait for 8 us;
+        wait for 60 us;
 
         -- TEST 5: Proceed with FDM Sum viewing (sel="100")
         report "Switching to Modulated FDM Sum...";
@@ -154,7 +155,7 @@ begin
         else
             report "FDM Sum Output Validated! (AC Signal Verified)";
         end if;
-        wait for 8 us;
+        wait for 60 us;
         
         -- TEST 6: Channel Output (sel="101")
         report "Switching to Channel Output...";
@@ -168,7 +169,7 @@ begin
         else
             report "Channel Output Validated! (Filtered AC Signal Verified)";
         end if;
-        wait for 8 us;
+        wait for 60 us;
         
         report "Total sel values tested: 6";
         if error_count = 0 then

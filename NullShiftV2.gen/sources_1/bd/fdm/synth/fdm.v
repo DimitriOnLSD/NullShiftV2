@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Tue Jul  7 21:35:24 2026
+//Date        : Tue Jul  7 23:58:31 2026
 //Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
 //Command     : generate_target fdm.bd
 //Design      : fdm
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=21,numReposBlks=21,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
+(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=22,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
 module fdm
    (dac_data_o,
     reset,
@@ -23,6 +23,7 @@ module fdm
 
   wire [15:0]ask_mapper_douta;
   wire [15:0]ask_modulator_m_axis_data_tdata;
+  wire baud_rate_gen_0_ce_out;
   wire [1:0]bin_data_stream_1_douta;
   wire [0:0]bin_data_stream_2_doutb;
   wire [39:0]c_addsub_0_S;
@@ -55,6 +56,11 @@ module fdm
   fdm_dds_compiler_0_0 ask_modulator
        (.aclk(clk_wiz_0_clk_out1),
         .m_axis_data_tdata(ask_modulator_m_axis_data_tdata));
+  fdm_baud_rate_gen_0_0 baud_rate_gen_0
+       (.ce_in(clk_wiz_0_locked),
+        .ce_out(baud_rate_gen_0_ce_out),
+        .clk(clk_wiz_0_clk_out1),
+        .reset(proc_sys_reset_0_peripheral_reset));
   fdm_blk_mem_gen_0_0 bin_data_stream_1
        (.addra(c_counter_binary_0_Q),
         .clka(clk_wiz_0_clk_out1),
@@ -77,7 +83,7 @@ module fdm
         .CLK(clk_wiz_0_clk_out1),
         .S(c_addsub_0_S));
   fdm_c_counter_binary_0_0 c_counter_binary_0
-       (.CE(clk_wiz_0_locked),
+       (.CE(baud_rate_gen_0_ce_out),
         .CLK(clk_wiz_0_clk_out1),
         .Q(c_counter_binary_0_Q));
   fdm_clk_wiz_0_0 clk_wiz_0

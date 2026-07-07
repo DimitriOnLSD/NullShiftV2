@@ -31,7 +31,8 @@
       "c_counter_binary_0": "",
       "proc_sys_reset_0": "",
       "mux_0": "",
-      "const_vcc": ""
+      "const_vcc": "",
+      "baud_rate_gen_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -644,6 +645,59 @@
             "value": "1"
           }
         }
+      },
+      "baud_rate_gen_0": {
+        "vlnv": "xilinx.com:module_ref:baud_rate_gen:1.0",
+        "ip_revision": "1",
+        "xci_name": "fdm_baud_rate_gen_0_0",
+        "xci_path": "ip\\fdm_baud_rate_gen_0_0\\fdm_baud_rate_gen_0_0.xci",
+        "inst_hier_path": "baud_rate_gen_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "baud_rate_gen",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "reset",
+                "value_src": "constant"
+              },
+              "FREQ_HZ": {
+                "value": "100000000",
+                "value_src": "ip_prop"
+              },
+              "PHASE": {
+                "value": "0.0",
+                "value_src": "ip_prop"
+              },
+              "CLK_DOMAIN": {
+                "value": "/clk_wiz_0_clk_out1",
+                "value_src": "ip_prop"
+              }
+            }
+          },
+          "reset": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
+              }
+            }
+          },
+          "ce_in": {
+            "direction": "I"
+          },
+          "ce_out": {
+            "direction": "O"
+          }
+        }
       }
     },
     "nets": {
@@ -660,6 +714,12 @@
           "ask_modulator/m_axis_data_tdata",
           "mult_gen_0/B",
           "ila_0/probe2"
+        ]
+      },
+      "baud_rate_gen_0_ce_out": {
+        "ports": [
+          "baud_rate_gen_0/ce_out",
+          "c_counter_binary_0/CE"
         ]
       },
       "bin_data_stream_1_douta": {
@@ -713,7 +773,8 @@
           "c_counter_binary_0/CLK",
           "bin_data_stream_2/clkb",
           "proc_sys_reset_0/slowest_sync_clk",
-          "mux_0/clk"
+          "mux_0/clk",
+          "baud_rate_gen_0/clk"
         ]
       },
       "clk_wiz_0_locked": {
@@ -724,8 +785,8 @@
           "bin_data_stream_2/ena",
           "line_coder/ena",
           "c_addsub_0/CE",
-          "c_counter_binary_0/CE",
-          "bin_data_stream_2/enb"
+          "bin_data_stream_2/enb",
+          "baud_rate_gen_0/ce_in"
         ]
       },
       "const_vcc_dout": {
@@ -814,7 +875,8 @@
       "proc_sys_reset_0_peripheral_reset": {
         "ports": [
           "proc_sys_reset_0/peripheral_reset",
-          "mux_0/rst"
+          "mux_0/rst",
+          "baud_rate_gen_0/reset"
         ]
       },
       "reset_1": {
