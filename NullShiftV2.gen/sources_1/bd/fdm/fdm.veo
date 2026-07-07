@@ -56,7 +56,8 @@
 fdm your_instance_name (
   .sys_clock(sys_clock), // input wire sys_clock
   .reset(reset), // input wire reset
-  .sel(sel) // input wire [2:0] sel
+  .sel(sel), // input wire [2:0] sel
+  .dac_data_o(dac_data_o) // output wire [23:0] dac_data_o
 );
 // INST_TAG_END ------  End cut for INSTANTIATION Template  ------
 

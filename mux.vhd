@@ -13,6 +13,8 @@ entity mux is
 
     ask_raw_i    : in  std_logic_vector(15 downto 0);
     ook_raw_i    : in  std_logic_vector(15 downto 0);
+    ask_raw_o    : out std_logic_vector(15 downto 0);
+    ook_raw_o    : out std_logic_vector(15 downto 0);
     ask_gain_i   : in  std_logic_vector(22 downto 0);
     ook_gain_i   : in  std_logic_vector(22 downto 0);
     fdm_sum_i    : in  std_logic_vector(22 downto 0);
@@ -33,13 +35,16 @@ architecture Behavioral of mux is
 
 begin
 
+  ask_raw_o <= ask_raw_i(15 downto 0);
+  ook_raw_o <= ook_raw_i(15 downto 0);
+
   process(sel, ask_raw_i, ook_raw_i, ask_gain_i, ook_gain_i, fdm_sum_i, channel_i)
   begin
     case sel is
       when "000" =>
-        mux_data <= resize_s(ask_raw_i, OUT_WIDTH);
+        mux_data <= resize_s(ask_raw_i(15 downto 0), OUT_WIDTH);
       when "001" =>
-        mux_data <= resize_s(ook_raw_i, OUT_WIDTH);
+        mux_data <= resize_s(ook_raw_i(15 downto 0), OUT_WIDTH);
       when "010" =>
         mux_data <= resize_s(ask_gain_i, OUT_WIDTH);
       when "011" =>

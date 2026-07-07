@@ -2,11 +2,11 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Sun Apr 26 21:59:31 2026
+-- Date        : Tue Jul  7 15:21:18 2026
 -- Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode synth_stub -rename_top fdm_mult_gen_0_0 -prefix
---               fdm_mult_gen_0_0_ fdm_mult_gen_0_2_stub.vhdl
--- Design      : fdm_mult_gen_0_2
+--               fdm_mult_gen_0_0_ fdm_mult_gen_0_0_stub.vhdl
+-- Design      : fdm_mult_gen_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1
 -- --------------------------------------------------------------------------------
@@ -22,9 +22,9 @@ entity fdm_mult_gen_0_0 is
   );
 
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of fdm_mult_gen_0_0 : entity is "fdm_mult_gen_0_2,mult_gen_v12_0_24,{}";
+  attribute CHECK_LICENSE_TYPE of fdm_mult_gen_0_0 : entity is "fdm_mult_gen_0_0,mult_gen_v12_0_24,{}";
   attribute core_generation_info : string;
-  attribute core_generation_info of fdm_mult_gen_0_0 : entity is "fdm_mult_gen_0_2,mult_gen_v12_0_24,{x_ipProduct=Vivado 2025.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mult_gen,x_ipVersion=12.0,x_ipCoreRevision=24,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_MODEL_TYPE=0,C_OPTIMIZE_GOAL=1,C_XDEVICEFAMILY=zynq,C_HAS_CE=0,C_HAS_SCLR=0,C_LATENCY=1,C_A_WIDTH=16,C_A_TYPE=0,C_B_WIDTH=16,C_B_TYPE=0,C_OUT_HIGH=31,C_OUT_LOW=0,C_MULT_TYPE=0,C_CE_OVERRIDES_SCLR=0,C_CCM_IMP=0,C_B_VALUE=10000001,C_HAS_ZERO_DETECT=0,C_ROUND_OUTPUT=0,C_ROUND_PT=0}";
+  attribute core_generation_info of fdm_mult_gen_0_0 : entity is "fdm_mult_gen_0_0,mult_gen_v12_0_24,{x_ipProduct=Vivado 2025.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=mult_gen,x_ipVersion=12.0,x_ipCoreRevision=24,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_VERBOSITY=0,C_MODEL_TYPE=0,C_OPTIMIZE_GOAL=1,C_XDEVICEFAMILY=zynq,C_HAS_CE=0,C_HAS_SCLR=0,C_LATENCY=1,C_A_WIDTH=16,C_A_TYPE=0,C_B_WIDTH=16,C_B_TYPE=0,C_OUT_HIGH=31,C_OUT_LOW=0,C_MULT_TYPE=0,C_CE_OVERRIDES_SCLR=0,C_CCM_IMP=0,C_B_VALUE=10000001,C_HAS_ZERO_DETECT=0,C_ROUND_OUTPUT=0,C_ROUND_PT=0}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of fdm_mult_gen_0_0 : entity is "yes";
 end fdm_mult_gen_0_0;

@@ -67,7 +67,7 @@ input wire clka;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA EN" *)
 input wire ena;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR" *)
-input wire [0 : 0] addra;
+input wire [1 : 0] addra;
 (* X_INTERFACE_INFO = "xilinx.com:interface:bram:1.0 BRAM_PORTA DOUT" *)
 output wire [15 : 0] douta;
 
@@ -103,9 +103,9 @@ output wire [15 : 0] douta;
     .C_WRITE_MODE_A("WRITE_FIRST"),
     .C_WRITE_WIDTH_A(16),
     .C_READ_WIDTH_A(16),
-    .C_WRITE_DEPTH_A(2),
-    .C_READ_DEPTH_A(2),
-    .C_ADDRA_WIDTH(1),
+    .C_WRITE_DEPTH_A(4),
+    .C_READ_DEPTH_A(4),
+    .C_ADDRA_WIDTH(2),
     .C_HAS_RSTB(0),
     .C_RST_PRIORITY_B("CE"),
     .C_RSTRAM_B(0),
@@ -117,9 +117,9 @@ output wire [15 : 0] douta;
     .C_WRITE_MODE_B("WRITE_FIRST"),
     .C_WRITE_WIDTH_B(16),
     .C_READ_WIDTH_B(16),
-    .C_WRITE_DEPTH_B(2),
-    .C_READ_DEPTH_B(2),
-    .C_ADDRB_WIDTH(1),
+    .C_WRITE_DEPTH_B(4),
+    .C_READ_DEPTH_B(4),
+    .C_ADDRB_WIDTH(2),
     .C_HAS_MEM_OUTPUT_REGS_A(1),
     .C_HAS_MEM_OUTPUT_REGS_B(0),
     .C_HAS_MUX_OUTPUT_REGS_A(0),
@@ -161,7 +161,7 @@ output wire [15 : 0] douta;
     .enb(1'D0),
     .regceb(1'D1),
     .web(1'B0),
-    .addrb(1'B0),
+    .addrb(2'B0),
     .dinb(16'B0),
     .doutb(),
     .injectsbiterr(1'D0),

@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA8C0CAC773F04166",
+      "boundary_crc": "0xD5C586E3294E46D5",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../NullShiftV2.gen/sources_1/bd/fdm",
       "name": "fdm",
@@ -29,8 +29,9 @@
       "fir_compiler_0": "",
       "tvalid_gen": "",
       "c_counter_binary_0": "",
+      "proc_sys_reset_0": "",
       "mux_0": "",
-      "bin_data_stream_3": ""
+      "const_vcc": ""
     },
     "ports": {
       "sys_clock": {
@@ -74,6 +75,11 @@
         "direction": "I",
         "left": "2",
         "right": "0"
+      },
+      "dac_data_o": {
+        "direction": "O",
+        "left": "23",
+        "right": "0"
       }
     },
     "components": {
@@ -86,7 +92,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "Coe_File": {
-            "value": "../../../../../../data.coe"
+            "value": "../../../../../../test.coe"
           },
           "Fill_Remaining_Memory_Locations": {
             "value": "true"
@@ -101,7 +107,7 @@
             "value": "16"
           },
           "Write_Width_A": {
-            "value": "1"
+            "value": "2"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -117,7 +123,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "Coe_File": {
-            "value": "../../../../../../mapper_2ask.coe"
+            "value": "../../../../../../mapper_4ask.coe"
           },
           "Enable_A": {
             "value": "Use_ENA_Pin"
@@ -132,7 +138,7 @@
             "value": "Single_Port_ROM"
           },
           "Write_Depth_A": {
-            "value": "2"
+            "value": "4"
           },
           "Write_Width_A": {
             "value": "16"
@@ -160,7 +166,7 @@
             "value": "14"
           },
           "C_PROBE0_WIDTH": {
-            "value": "1"
+            "value": "2"
           },
           "C_PROBE10_WIDTH": {
             "value": "40"
@@ -187,7 +193,7 @@
             "value": "40"
           },
           "C_PROBE5_WIDTH": {
-            "value": "2"
+            "value": "1"
           },
           "C_PROBE6_WIDTH": {
             "value": "16"
@@ -300,8 +306,17 @@
           "Memory_Type": {
             "value": "Simple_Dual_Port_RAM"
           },
+          "Read_Width_B": {
+            "value": "1"
+          },
+          "Write_Depth_A": {
+            "value": "16"
+          },
+          "Write_Width_A": {
+            "value": "1"
+          },
           "Write_Width_B": {
-            "value": "2"
+            "value": "1"
           },
           "use_bram_block": {
             "value": "Stand_Alone"
@@ -317,7 +332,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "Coe_File": {
-            "value": "../../../../../../mapper_4ask.coe"
+            "value": "../../../../../../mapper_2ask.coe"
           },
           "Enable_A": {
             "value": "Use_ENA_Pin"
@@ -333,6 +348,9 @@
           },
           "Use_Byte_Write_Enable": {
             "value": "false"
+          },
+          "Write_Depth_A": {
+            "value": "2"
           },
           "Write_Width_A": {
             "value": "16"
@@ -428,17 +446,26 @@
         "inst_hier_path": "fir_compiler_0",
         "has_run_ip_tcl": "true",
         "parameters": {
+          "Clock_Frequency": {
+            "value": "125.0"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
           "Data_Width": {
             "value": "40"
           },
+          "Has_ARESETn": {
+            "value": "true"
+          },
           "Output_Rounding_Mode": {
             "value": "Full_Precision"
           },
           "Output_Width": {
             "value": "48"
+          },
+          "Sample_Frequency": {
+            "value": "125.0"
           }
         }
       },
@@ -474,11 +501,19 @@
           }
         }
       },
+      "proc_sys_reset_0": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "ip_revision": "17",
+        "xci_name": "fdm_proc_sys_reset_0_0",
+        "xci_path": "ip\\fdm_proc_sys_reset_0_0\\fdm_proc_sys_reset_0_0.xci",
+        "inst_hier_path": "proc_sys_reset_0",
+        "has_run_ip_tcl": "true"
+      },
       "mux_0": {
         "vlnv": "xilinx.com:module_ref:mux:1.0",
         "ip_revision": "1",
-        "xci_name": "fdm_mux_0_0",
-        "xci_path": "ip\\fdm_mux_0_0\\fdm_mux_0_0.xci",
+        "xci_name": "fdm_mux_0_2",
+        "xci_path": "ip\\fdm_mux_0_2\\fdm_mux_0_2.xci",
         "inst_hier_path": "mux_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -514,7 +549,8 @@
             "direction": "I",
             "parameters": {
               "POLARITY": {
-                "value": "ACTIVE_HIGH"
+                "value": "ACTIVE_HIGH",
+                "value_src": "const_prop"
               }
             }
           },
@@ -526,36 +562,12 @@
           "ask_raw_i": {
             "direction": "I",
             "left": "31",
-            "right": "0",
-            "parameters": {
-              "LAYERED_METADATA": {
-                "value": [
-                  "xilinx.com:interface:datatypes:1.0 {",
-                  "DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum",
-                  "{} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format",
-                  "bool minimum {} maximum {}} value TRUE}}}} DATA_WIDTH 32",
-                  "}"
-                ],
-                "value_src": "ip_prop"
-              }
-            }
+            "right": "0"
           },
           "ook_raw_i": {
             "direction": "I",
             "left": "31",
-            "right": "0",
-            "parameters": {
-              "LAYERED_METADATA": {
-                "value": [
-                  "xilinx.com:interface:datatypes:1.0 {",
-                  "DATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value data} bitwidth {attribs {resolve_type generated dependency bitwidth format long minimum",
-                  "{} maximum {}} value 32} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type generated dependency signed format",
-                  "bool minimum {} maximum {}} value TRUE}}}} DATA_WIDTH 32",
-                  "}"
-                ],
-                "value_src": "ip_prop"
-              }
-            }
+            "right": "0"
           },
           "ask_gain_i": {
             "direction": "I",
@@ -620,34 +632,16 @@
           }
         }
       },
-      "bin_data_stream_3": {
-        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
-        "ip_revision": "12",
-        "xci_name": "fdm_bin_data_stream_1_1",
-        "xci_path": "ip\\fdm_bin_data_stream_1_1\\fdm_bin_data_stream_1_1.xci",
-        "inst_hier_path": "bin_data_stream_3",
+      "const_vcc": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "10",
+        "xci_name": "fdm_const_vcc_0",
+        "xci_path": "ip\\fdm_const_vcc_0\\fdm_const_vcc_0.xci",
+        "inst_hier_path": "const_vcc",
         "has_run_ip_tcl": "true",
         "parameters": {
-          "Coe_File": {
-            "value": "../../../../../../test.coe"
-          },
-          "Fill_Remaining_Memory_Locations": {
-            "value": "true"
-          },
-          "Load_Init_File": {
-            "value": "true"
-          },
-          "Memory_Type": {
-            "value": "Single_Port_ROM"
-          },
-          "Write_Depth_A": {
-            "value": "16"
-          },
-          "Write_Width_A": {
+          "CONST_VAL": {
             "value": "1"
-          },
-          "use_bram_block": {
-            "value": "Stand_Alone"
           }
         }
       }
@@ -656,8 +650,9 @@
       "ask_mapper_douta": {
         "ports": [
           "ask_mapper/douta",
-          "mult_gen_0/A",
-          "ila_0/probe1"
+          "ila_0/probe1",
+          "mux_0/ask_raw_i",
+          "mult_gen_0/A"
         ]
       },
       "ask_modulator_m_axis_data_tdata": {
@@ -669,7 +664,7 @@
       },
       "bin_data_stream_1_douta": {
         "ports": [
-          "bin_data_stream_3/douta",
+          "bin_data_stream_1/douta",
           "ask_mapper/addra",
           "ila_0/probe0"
         ]
@@ -677,6 +672,7 @@
       "bin_data_stream_2_doutb": {
         "ports": [
           "bin_data_stream_2/doutb",
+          "line_coder/addra",
           "ila_0/probe5"
         ]
       },
@@ -693,7 +689,8 @@
           "c_counter_binary_0/Q",
           "bin_data_stream_1/addra",
           "ila_0/probe12",
-          "bin_data_stream_3/addra"
+          "bin_data_stream_2/addra",
+          "bin_data_stream_2/addrb"
         ]
       },
       "clk_wiz_0_clk_out1": {
@@ -706,7 +703,6 @@
           "mult_gen_1/CLK",
           "mult_gen_0/CLK",
           "bin_data_stream_2/clka",
-          "bin_data_stream_2/clkb",
           "line_coder/clka",
           "ook_modulator/aclk",
           "mult_gen_2/CLK",
@@ -715,8 +711,9 @@
           "fir_compiler_0/aclk",
           "tvalid_gen/CLK",
           "c_counter_binary_0/CLK",
-          "mux_0/clk",
-          "bin_data_stream_3/clka"
+          "bin_data_stream_2/clkb",
+          "proc_sys_reset_0/slowest_sync_clk",
+          "mux_0/clk"
         ]
       },
       "clk_wiz_0_locked": {
@@ -725,11 +722,16 @@
           "bin_data_stream_1/ena",
           "ask_mapper/ena",
           "bin_data_stream_2/ena",
-          "bin_data_stream_2/enb",
           "line_coder/ena",
           "c_addsub_0/CE",
           "c_counter_binary_0/CE",
-          "bin_data_stream_3/ena"
+          "bin_data_stream_2/enb"
+        ]
+      },
+      "const_vcc_dout": {
+        "ports": [
+          "const_vcc/dout",
+          "tvalid_gen/D"
         ]
       },
       "fir_compiler_0_m_axis_data_tdata": {
@@ -754,16 +756,16 @@
       "line_coder_douta": {
         "ports": [
           "line_coder/douta",
-          "mult_gen_2/A",
-          "ila_0/probe6"
+          "ila_0/probe6",
+          "mux_0/ook_raw_i",
+          "mult_gen_2/A"
         ]
       },
       "mult_gen_0_P": {
         "ports": [
           "mult_gen_0/P",
           "mult_gen_1/A",
-          "ila_0/probe3",
-          "mux_0/ask_raw_i"
+          "ila_0/probe3"
         ]
       },
       "mult_gen_1_P": {
@@ -778,8 +780,7 @@
         "ports": [
           "mult_gen_2/P",
           "mult_gen_3/A",
-          "ila_0/probe8",
-          "mux_0/ook_raw_i"
+          "ila_0/probe8"
         ]
       },
       "mult_gen_3_P": {
@@ -793,7 +794,8 @@
       "mux_0_dac_data_o": {
         "ports": [
           "mux_0/dac_data_o",
-          "ila_0/probe13"
+          "ila_0/probe13",
+          "dac_data_o"
         ]
       },
       "ook_modulator_m_axis_data_tdata": {
@@ -803,11 +805,23 @@
           "ila_0/probe7"
         ]
       },
+      "proc_sys_reset_0_peripheral_aresetn": {
+        "ports": [
+          "proc_sys_reset_0/peripheral_aresetn",
+          "fir_compiler_0/aresetn"
+        ]
+      },
+      "proc_sys_reset_0_peripheral_reset": {
+        "ports": [
+          "proc_sys_reset_0/peripheral_reset",
+          "mux_0/rst"
+        ]
+      },
       "reset_1": {
         "ports": [
           "reset",
           "clk_wiz_0/reset",
-          "mux_0/rst"
+          "proc_sys_reset_0/ext_reset_in"
         ]
       },
       "sel_1": {
@@ -825,7 +839,6 @@
       "tvalid_gen_Q": {
         "ports": [
           "tvalid_gen/Q",
-          "tvalid_gen/D",
           "fir_compiler_0/s_axis_data_tvalid"
         ]
       }

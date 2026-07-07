@@ -58,13 +58,16 @@ module fdm_sv (
   (* X_INTERFACE_IGNORE = "true" *)
   input wire reset,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [2:0] sel
+  input wire [2:0] sel,
+  (* X_INTERFACE_IGNORE = "true" *)
+  output wire [23:0] dac_data_o
 );
 
   fdm inst (
     .sys_clock(sys_clock),
     .reset(reset),
-    .sel(sel)
+    .sel(sel),
+    .dac_data_o(dac_data_o)
   );
 
 endmodule

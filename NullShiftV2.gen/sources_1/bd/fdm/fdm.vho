@@ -55,7 +55,8 @@ COMPONENT fdm
   PORT (
     sys_clock : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    sel : IN STD_LOGIC_VECTOR(2 DOWNTO 0)
+    sel : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+    dac_data_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
   );
 END COMPONENT;
 -- COMP_TAG_END ------  End cut for COMPONENT Declaration  ------
@@ -68,7 +69,8 @@ your_instance_name : fdm
   PORT MAP (
     sys_clock => sys_clock,
     reset => reset,
-    sel => sel
+    sel => sel,
+    dac_data_o => dac_data_o
   );
 -- INST_TAG_END ------  End cut for INSTANTIATION Template  ------
 

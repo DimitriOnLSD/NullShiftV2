@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
--- Date        : Sun Apr 26 21:59:52 2026
+-- Date        : Tue Jul  7 21:38:32 2026
 -- Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub -rename_top fdm_fir_compiler_0_0 -prefix
---               fdm_fir_compiler_0_0_ fdm_fir_compiler_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub
+--               c:/GIT/NullShiftV2/NullShiftV2.gen/sources_1/bd/fdm/ip/fdm_fir_compiler_0_0/fdm_fir_compiler_0_0_stub.vhdl
 -- Design      : fdm_fir_compiler_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1
@@ -15,6 +15,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity fdm_fir_compiler_0_0 is
   Port ( 
+    aresetn : in STD_LOGIC;
     aclk : in STD_LOGIC;
     s_axis_data_tvalid : in STD_LOGIC;
     s_axis_data_tready : out STD_LOGIC;
@@ -26,7 +27,7 @@ entity fdm_fir_compiler_0_0 is
   attribute CHECK_LICENSE_TYPE : string;
   attribute CHECK_LICENSE_TYPE of fdm_fir_compiler_0_0 : entity is "fdm_fir_compiler_0_0,fir_compiler_v7_2_26,{}";
   attribute core_generation_info : string;
-  attribute core_generation_info of fdm_fir_compiler_0_0 : entity is "fdm_fir_compiler_0_0,fir_compiler_v7_2_26,{x_ipProduct=Vivado 2025.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=fir_compiler,x_ipVersion=7.2,x_ipCoreRevision=26,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_ELABORATION_DIR=./,C_COMPONENT_NAME=fdm_fir_compiler_0_0,C_COEF_FILE=fdm_fir_compiler_0_0.mif,C_COEF_FILE_LINES=11,C_DATA_COEFFICIENT_TYPE=0,C_FILTER_TYPE=0,C_INTERP_RATE=1,C_DECIM_RATE=1,C_ZERO_PACKING_FACTOR=1,C_SYMMETRY=1,C_NUM_FILTS=1,C_NUM_TAPS=21,C_NUM_CHANNELS=1,C_CHANNEL_PATTERN=fixed,C_ROUND_MODE=0,C_COEF_RELOAD=0,C_NUM_RELOAD_SLOTS=1,C_COL_MODE=1,C_COL_PIPE_LEN=4,C_COL_CONFIG=1,C_OPTIMIZATION=0,C_DATA_PATH_WIDTHS=20_20,C_DATA_IP_PATH_WIDTHS=40,C_DATA_PX_PATH_WIDTHS=40,C_DATA_WIDTH=40,C_COEF_PATH_WIDTHS=16_16,C_COEF_WIDTH=16,C_DATA_PATH_SRC=0_1,C_COEF_PATH_SRC=0_0,C_PX_PATH_SRC=0_1,C_DATA_PATH_SIGN=1_0,C_COEF_PATH_SIGN=0_0,C_ACCUM_PATH_WIDTHS=29_28,C_OUTPUT_WIDTH=48,C_OUTPUT_PATH_WIDTHS=48,C_ACCUM_OP_PATH_WIDTHS=48,C_EXT_MULT_CNFG=0_1_0_20,C_DATA_PATH_PSAMP_SRC=0,C_OP_PATH_PSAMP_SRC=0,C_NUM_MADDS=1,C_OPT_MADDS=none,C_OVERSAMPLING_RATE=11,C_INPUT_RATE=300000,C_OUTPUT_RATE=300000,C_DATA_MEMTYPE=0,C_COEF_MEMTYPE=2,C_IPBUFF_MEMTYPE=0,C_OPBUFF_MEMTYPE=0,C_DATAPATH_MEMTYPE=0,C_MEM_ARRANGEMENT=1,C_DATA_MEM_PACKING=0,C_COEF_MEM_PACKING=0,C_FILTS_PACKED=0,C_LATENCY=20,C_HAS_ARESETn=0,C_HAS_ACLKEN=0,C_DATA_HAS_TLAST=0,C_S_DATA_HAS_FIFO=1,C_S_DATA_HAS_TUSER=0,C_S_DATA_TDATA_WIDTH=40,C_S_DATA_TUSER_WIDTH=1,C_M_DATA_HAS_TREADY=0,C_M_DATA_HAS_TUSER=0,C_M_DATA_TDATA_WIDTH=48,C_M_DATA_TUSER_WIDTH=1,C_HAS_CONFIG_CHANNEL=0,C_CONFIG_SYNC_MODE=0,C_CONFIG_PACKET_SIZE=0,C_CONFIG_TDATA_WIDTH=1,C_RELOAD_TDATA_WIDTH=1}";
+  attribute core_generation_info of fdm_fir_compiler_0_0 : entity is "fdm_fir_compiler_0_0,fir_compiler_v7_2_26,{x_ipProduct=Vivado 2025.2,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=fir_compiler,x_ipVersion=7.2,x_ipCoreRevision=26,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_XDEVICEFAMILY=zynq,C_ELABORATION_DIR=./,C_COMPONENT_NAME=fdm_fir_compiler_0_0,C_COEF_FILE=fdm_fir_compiler_0_0.mif,C_COEF_FILE_LINES=11,C_DATA_COEFFICIENT_TYPE=0,C_FILTER_TYPE=0,C_INTERP_RATE=1,C_DECIM_RATE=1,C_ZERO_PACKING_FACTOR=1,C_SYMMETRY=1,C_NUM_FILTS=1,C_NUM_TAPS=21,C_NUM_CHANNELS=1,C_CHANNEL_PATTERN=fixed,C_ROUND_MODE=0,C_COEF_RELOAD=0,C_NUM_RELOAD_SLOTS=1,C_COL_MODE=1,C_COL_PIPE_LEN=4,C_COL_CONFIG=11,C_OPTIMIZATION=0,C_DATA_PATH_WIDTHS=20_20,C_DATA_IP_PATH_WIDTHS=40,C_DATA_PX_PATH_WIDTHS=40,C_DATA_WIDTH=40,C_COEF_PATH_WIDTHS=16_16,C_COEF_WIDTH=16,C_DATA_PATH_SRC=0_1,C_COEF_PATH_SRC=0_0,C_PX_PATH_SRC=0_1,C_DATA_PATH_SIGN=1_0,C_COEF_PATH_SIGN=0_0,C_ACCUM_PATH_WIDTHS=29_28,C_OUTPUT_WIDTH=48,C_OUTPUT_PATH_WIDTHS=48,C_ACCUM_OP_PATH_WIDTHS=48,C_EXT_MULT_CNFG=0_1_0_20,C_DATA_PATH_PSAMP_SRC=0,C_OP_PATH_PSAMP_SRC=0,C_NUM_MADDS=11,C_OPT_MADDS=none,C_OVERSAMPLING_RATE=1,C_INPUT_RATE=1,C_OUTPUT_RATE=1,C_DATA_MEMTYPE=0,C_COEF_MEMTYPE=2,C_IPBUFF_MEMTYPE=0,C_OPBUFF_MEMTYPE=0,C_DATAPATH_MEMTYPE=0,C_MEM_ARRANGEMENT=1,C_DATA_MEM_PACKING=0,C_COEF_MEM_PACKING=0,C_FILTS_PACKED=0,C_LATENCY=19,C_HAS_ARESETn=2,C_HAS_ACLKEN=0,C_DATA_HAS_TLAST=0,C_S_DATA_HAS_FIFO=1,C_S_DATA_HAS_TUSER=0,C_S_DATA_TDATA_WIDTH=40,C_S_DATA_TUSER_WIDTH=1,C_M_DATA_HAS_TREADY=0,C_M_DATA_HAS_TUSER=0,C_M_DATA_TDATA_WIDTH=48,C_M_DATA_TUSER_WIDTH=1,C_HAS_CONFIG_CHANNEL=0,C_CONFIG_SYNC_MODE=0,C_CONFIG_PACKET_SIZE=0,C_CONFIG_TDATA_WIDTH=1,C_RELOAD_TDATA_WIDTH=1}";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of fdm_fir_compiler_0_0 : entity is "yes";
 end fdm_fir_compiler_0_0;
@@ -35,12 +36,15 @@ architecture stub of fdm_fir_compiler_0_0 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;
-  attribute black_box_pad_pin of stub : architecture is "aclk,s_axis_data_tvalid,s_axis_data_tready,s_axis_data_tdata[39:0],m_axis_data_tvalid,m_axis_data_tdata[47:0]";
+  attribute black_box_pad_pin of stub : architecture is "aresetn,aclk,s_axis_data_tvalid,s_axis_data_tready,s_axis_data_tdata[39:0],m_axis_data_tvalid,m_axis_data_tdata[47:0]";
   attribute x_interface_info : string;
-  attribute x_interface_info of aclk : signal is "xilinx.com:signal:clock:1.0 aclk_intf CLK";
+  attribute x_interface_info of aresetn : signal is "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   attribute x_interface_mode : string;
-  attribute x_interface_mode of aclk : signal is "slave aclk_intf";
+  attribute x_interface_mode of aresetn : signal is "slave aresetn_intf";
   attribute x_interface_parameter : string;
+  attribute x_interface_parameter of aresetn : signal is "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  attribute x_interface_info of aclk : signal is "xilinx.com:signal:clock:1.0 aclk_intf CLK";
+  attribute x_interface_mode of aclk : signal is "slave aclk_intf";
   attribute x_interface_parameter of aclk : signal is "XIL_INTERFACENAME aclk_intf, ASSOCIATED_BUSIF S_AXIS_CONFIG:M_AXIS_DATA:S_AXIS_DATA:S_AXIS_RELOAD, ASSOCIATED_RESET aresetn, ASSOCIATED_CLKEN aclken, FREQ_HZ 100000000, FREQ_TOLERANCE_HZ 0, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, INSERT_VIP 0";
   attribute x_interface_info of s_axis_data_tvalid : signal is "xilinx.com:interface:axis:1.0 S_AXIS_DATA TVALID";
   attribute x_interface_mode of s_axis_data_tvalid : signal is "slave S_AXIS_DATA";

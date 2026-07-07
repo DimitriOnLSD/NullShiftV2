@@ -29,8 +29,8 @@
         "RateSpecification": [ { "value": "Frequency_Specification", "resolve_type": "user", "usage": "all" } ],
         "HardwareOversamplingRate": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "SamplePeriod": [ { "value": "1", "resolve_type": "user", "format": "float", "usage": "all" } ],
-        "Sample_Frequency": [ { "value": "0.001", "resolve_type": "user", "format": "float", "usage": "all" } ],
-        "Clock_Frequency": [ { "value": "300.0", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "Sample_Frequency": [ { "value": "125.0", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
+        "Clock_Frequency": [ { "value": "125.0", "value_src": "user", "resolve_type": "user", "format": "float", "usage": "all" } ],
         "Coefficient_Sign": [ { "value": "Signed", "resolve_type": "user", "usage": "all" } ],
         "Quantization": [ { "value": "Integer_Coefficients", "resolve_type": "user", "usage": "all" } ],
         "Coefficient_Width": [ { "value": "16", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -66,7 +66,7 @@
         "Preference_For_Other_Storage": [ { "value": "Automatic", "resolve_type": "user", "usage": "all" } ],
         "Multi_Column_Support": [ { "value": "Automatic", "resolve_type": "user", "usage": "all" } ],
         "Inter_Column_Pipe_Length": [ { "value": "4", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "ColumnConfig": [ { "value": "1", "resolve_type": "user", "usage": "all" } ],
+        "ColumnConfig": [ { "value": "11", "resolve_type": "user", "usage": "all" } ],
         "DATA_Has_TLAST": [ { "value": "Not_Required", "resolve_type": "user", "usage": "all" } ],
         "M_DATA_Has_TREADY": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "S_DATA_Has_FIFO": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -77,7 +77,7 @@
         "S_CONFIG_Method": [ { "value": "Single", "resolve_type": "user", "usage": "all" } ],
         "Num_Reload_Slots": [ { "value": "1", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "Has_ACLKEN": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "Has_ARESETn": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "Has_ARESETn": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Reset_Data_Vector": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Blank_Output": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "Reset_Coeff_Vector": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
@@ -113,7 +113,7 @@
         "C_NUM_RELOAD_SLOTS": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_COL_MODE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_COL_PIPE_LEN": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_COL_CONFIG": [ { "value": "1", "resolve_type": "generated", "usage": "all" } ],
+        "C_COL_CONFIG": [ { "value": "11", "resolve_type": "generated", "usage": "all" } ],
         "C_OPTIMIZATION": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DATA_PATH_WIDTHS": [ { "value": "20,20", "resolve_type": "generated", "usage": "all" } ],
         "C_DATA_IP_PATH_WIDTHS": [ { "value": "40", "resolve_type": "generated", "usage": "all" } ],
@@ -133,11 +133,11 @@
         "C_EXT_MULT_CNFG": [ { "value": "0,1,0,20", "resolve_type": "generated", "usage": "all" } ],
         "C_DATA_PATH_PSAMP_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
         "C_OP_PATH_PSAMP_SRC": [ { "value": "0", "resolve_type": "generated", "usage": "all" } ],
-        "C_NUM_MADDS": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_NUM_MADDS": [ { "value": "11", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_OPT_MADDS": [ { "value": "none", "resolve_type": "generated", "usage": "all" } ],
-        "C_OVERSAMPLING_RATE": [ { "value": "11", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_INPUT_RATE": [ { "value": "300000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_OUTPUT_RATE": [ { "value": "300000", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OVERSAMPLING_RATE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_INPUT_RATE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_OUTPUT_RATE": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DATA_MEMTYPE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_COEF_MEMTYPE": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_IPBUFF_MEMTYPE": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -147,8 +147,8 @@
         "C_DATA_MEM_PACKING": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_COEF_MEM_PACKING": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_FILTS_PACKED": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_LATENCY": [ { "value": "20", "resolve_type": "generated", "format": "long", "usage": "all" } ],
-        "C_HAS_ARESETn": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_LATENCY": [ { "value": "19", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_HAS_ARESETn": [ { "value": "2", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_HAS_ACLKEN": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_DATA_HAS_TLAST": [ { "value": "0", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_DATA_HAS_FIFO": [ { "value": "1", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -191,6 +191,7 @@
     },
     "boundary": {
       "ports": {
+        "aresetn": [ { "direction": "in", "driver_value": "0x1" } ],
         "aclk": [ { "direction": "in" } ],
         "s_axis_data_tvalid": [ { "direction": "in", "driver_value": "0x0" } ],
         "s_axis_data_tready": [ { "direction": "out", "driver_value": "0x1" } ],
@@ -286,8 +287,11 @@
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
+          },
+          "port_maps": {
+            "RST": [ { "physical_name": "aresetn" } ]
           }
         },
         "aclken_intf": {
@@ -356,5 +360,5 @@
       }
     }
   },
-  "checksum": "870f50da"
+  "checksum": "cb04f37c"
 }
