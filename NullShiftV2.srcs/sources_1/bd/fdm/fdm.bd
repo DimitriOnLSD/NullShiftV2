@@ -235,10 +235,10 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "Output_Frequency1": {
-            "value": "5"
+            "value": "1"
           },
           "PINC1": {
-            "value": "110011001100110011001100"
+            "value": "1010001111010111000010"
           }
         }
       },
@@ -282,6 +282,9 @@
         "inst_hier_path": "gain_ask",
         "has_run_ip_tcl": "true",
         "parameters": {
+          "CONST_VAL": {
+            "value": "1"
+          },
           "CONST_WIDTH": {
             "value": "8"
           }
@@ -385,6 +388,9 @@
         "inst_hier_path": "gain_ook",
         "has_run_ip_tcl": "true",
         "parameters": {
+          "CONST_VAL": {
+            "value": "1"
+          },
           "CONST_WIDTH": {
             "value": "8"
           }
