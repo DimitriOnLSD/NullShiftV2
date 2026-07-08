@@ -21,7 +21,6 @@
       "gain_ask": "",
       "bin_data_stream_2": "",
       "line_coder": "",
-      "ook_modulator": "",
       "mult_gen_2": "",
       "gain_ook": "",
       "mult_gen_3": "",
@@ -32,7 +31,8 @@
       "proc_sys_reset_0": "",
       "mux_0": "",
       "const_vcc": "",
-      "baud_rate_gen_0": ""
+      "baud_rate_gen_0": "",
+      "ook_modulator": ""
     },
     "ports": {
       "sys_clock": {
@@ -360,14 +360,6 @@
             "value": "Stand_Alone"
           }
         }
-      },
-      "ook_modulator": {
-        "vlnv": "xilinx.com:ip:dds_compiler:6.0",
-        "ip_revision": "28",
-        "xci_name": "fdm_ask_modulator_0",
-        "xci_path": "ip\\fdm_ask_modulator_0\\fdm_ask_modulator_0.xci",
-        "inst_hier_path": "ook_modulator",
-        "has_run_ip_tcl": "true"
       },
       "mult_gen_2": {
         "vlnv": "xilinx.com:ip:mult_gen:12.0",
@@ -698,6 +690,22 @@
             "direction": "O"
           }
         }
+      },
+      "ook_modulator": {
+        "vlnv": "xilinx.com:ip:dds_compiler:6.0",
+        "ip_revision": "28",
+        "xci_name": "fdm_ask_modulator_1",
+        "xci_path": "ip\\fdm_ask_modulator_1\\fdm_ask_modulator_1.xci",
+        "inst_hier_path": "ook_modulator",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "Output_Frequency1": {
+            "value": "2"
+          },
+          "PINC1": {
+            "value": "10100011110101110000101"
+          }
+        }
       }
     },
     "nets": {
@@ -764,7 +772,6 @@
           "mult_gen_0/CLK",
           "bin_data_stream_2/clka",
           "line_coder/clka",
-          "ook_modulator/aclk",
           "mult_gen_2/CLK",
           "mult_gen_3/CLK",
           "c_addsub_0/CLK",
@@ -774,7 +781,8 @@
           "bin_data_stream_2/clkb",
           "proc_sys_reset_0/slowest_sync_clk",
           "mux_0/clk",
-          "baud_rate_gen_0/clk"
+          "baud_rate_gen_0/clk",
+          "ook_modulator/aclk"
         ]
       },
       "clk_wiz_0_locked": {

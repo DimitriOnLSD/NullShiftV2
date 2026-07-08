@@ -2,7 +2,7 @@
 <spirit:component xmlns:xilinx="http://www.xilinx.com" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <spirit:vendor>xilinx.com</spirit:vendor>
   <spirit:library>customized_ip</spirit:library>
-  <spirit:name>fdm_dds_compiler_0_0</spirit:name>
+  <spirit:name>fdm_ask_modulator_1</spirit:name>
   <spirit:version>1.0</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
@@ -1102,7 +1102,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ac6ac759</spirit:value>
+            <spirit:value>9:c82de816</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1117,11 +1117,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 08 00:55:05 UTC 2026</spirit:value>
+            <spirit:value>Wed Jul 08 00:55:06 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:ac6ac759</spirit:value>
+            <spirit:value>9:c82de816</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1159,7 +1159,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:54b980c3</spirit:value>
+            <spirit:value>9:43e4e479</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1168,18 +1168,18 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
         <spirit:displayName>VHDL Simulation Wrapper</spirit:displayName>
         <spirit:envIdentifier>vhdlSource:vivado.xilinx.com:simulation.wrapper</spirit:envIdentifier>
         <spirit:language>vhdl</spirit:language>
-        <spirit:modelName>fdm_dds_compiler_0_0</spirit:modelName>
+        <spirit:modelName>fdm_ask_modulator_1</spirit:modelName>
         <spirit:fileSetRef>
           <spirit:localName>xilinx_vhdlsimulationwrapper_view_fileset</spirit:localName>
         </spirit:fileSetRef>
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>GENtimestamp</spirit:name>
-            <spirit:value>Wed Jul 08 00:55:05 UTC 2026</spirit:value>
+            <spirit:value>Wed Jul 08 00:55:06 UTC 2026</spirit:value>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>outputProductCRC</spirit:name>
-            <spirit:value>9:54b980c3</spirit:value>
+            <spirit:value>9:43e4e479</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1946,7 +1946,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="string">
         <spirit:name>C_PHASE_INCREMENT_VALUE</spirit:name>
-        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PHASE_INCREMENT_VALUE">110011001100110011001100,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</spirit:value>
+        <spirit:value spirit:resolve="generated" spirit:id="MODELPARAM_VALUE.C_PHASE_INCREMENT_VALUE">10100011110101110000101,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0</spirit:value>
       </spirit:modelParameter>
       <spirit:modelParameter spirit:dataType="integer">
         <spirit:name>C_RESYNC</spirit:name>
@@ -2494,7 +2494,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     <spirit:fileSet>
       <spirit:name>xilinx_vhdlsimulationwrapper_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>sim/fdm_dds_compiler_0_0.vhd</spirit:name>
+        <spirit:name>sim/fdm_ask_modulator_1.vhd</spirit:name>
         <spirit:fileType>vhdlSource</spirit:fileType>
         <spirit:logicalName>xil_defaultlib</spirit:logicalName>
       </spirit:file>
@@ -2505,7 +2505,7 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
       <spirit:displayName>Component Name</spirit:displayName>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">fdm_dds_compiler_0_0</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">fdm_ask_modulator_1</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>PartsPresent</spirit:name>
@@ -2682,11 +2682,11 @@ rated dependency chanid_width format long minimum {} maximum {}} value 0} bitoff
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Output_Frequency1</spirit:name>
-      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.Output_Frequency1" spirit:order="32" spirit:minimum="0" spirit:maximum="100">5</spirit:value>
+      <spirit:value spirit:format="float" spirit:resolve="user" spirit:id="PARAM_VALUE.Output_Frequency1" spirit:order="32" spirit:minimum="0" spirit:maximum="100">2</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>PINC1</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.PINC1" spirit:order="33">110011001100110011001100</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.PINC1" spirit:order="33">10100011110101110000101</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Phase_Offset_Angles1</spirit:name>

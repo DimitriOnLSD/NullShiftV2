@@ -2,8 +2,8 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Tue Jul  7 23:58:31 2026
-//Host        : DESKTOP-UTPE96E running 64-bit major release  (build 9200)
+//Date        : Wed Jul  8 01:55:02 2026
+//Host        : LENOVO-LOQ-15IRX9 running 64-bit major release  (build 9200)
 //Command     : generate_target fdm.bd
 //Design      : fdm
 //Purpose     : IP block netlist
@@ -157,7 +157,7 @@ module fdm
         .ook_raw_i({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,line_coder_douta}),
         .rst(proc_sys_reset_0_peripheral_reset),
         .sel(sel));
-  fdm_ask_modulator_0 ook_modulator
+  fdm_ask_modulator_1 ook_modulator
        (.aclk(clk_wiz_0_clk_out1),
         .m_axis_data_tdata(ook_modulator_m_axis_data_tdata));
   fdm_proc_sys_reset_0_0 proc_sys_reset_0
