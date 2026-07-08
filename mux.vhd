@@ -20,7 +20,7 @@ entity mux is
     fdm_sum_i    : in  std_logic_vector(39 downto 0);
     channel_i    : in  std_logic_vector(47 downto 0);
 
-    dac_data_o   : out std_logic_vector(OUT_WIDTH-1 downto 0)
+    dac_data_o   : out std_logic_vector(OUT_WIDTH-1 downto 0)  
   );
 end mux;
 
