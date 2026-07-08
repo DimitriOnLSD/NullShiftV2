@@ -54,19 +54,73 @@
 
 module fdm_sv (
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire sys_clock,
+  inout wire DDR_cas_n,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire reset,
+  inout wire DDR_cke,
   (* X_INTERFACE_IGNORE = "true" *)
-  input wire [2:0] sel,
+  inout wire DDR_ck_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_ck_p,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_cs_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_reset_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_odt,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_ras_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire DDR_we_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [2:0] DDR_ba,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [14:0] DDR_addr,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [3:0] DDR_dm,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [31:0] DDR_dq,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [3:0] DDR_dqs_n,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [3:0] DDR_dqs_p,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire [53:0] FIXED_IO_mio,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire FIXED_IO_ddr_vrn,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire FIXED_IO_ddr_vrp,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire FIXED_IO_ps_srstb,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire FIXED_IO_ps_clk,
+  (* X_INTERFACE_IGNORE = "true" *)
+  inout wire FIXED_IO_ps_porb,
   (* X_INTERFACE_IGNORE = "true" *)
   output wire [23:0] dac_data_o
 );
 
   fdm inst (
-    .sys_clock(sys_clock),
-    .reset(reset),
-    .sel(sel),
+    .DDR_cas_n(DDR_cas_n),
+    .DDR_cke(DDR_cke),
+    .DDR_ck_n(DDR_ck_n),
+    .DDR_ck_p(DDR_ck_p),
+    .DDR_cs_n(DDR_cs_n),
+    .DDR_reset_n(DDR_reset_n),
+    .DDR_odt(DDR_odt),
+    .DDR_ras_n(DDR_ras_n),
+    .DDR_we_n(DDR_we_n),
+    .DDR_ba(DDR_ba),
+    .DDR_addr(DDR_addr),
+    .DDR_dm(DDR_dm),
+    .DDR_dq(DDR_dq),
+    .DDR_dqs_n(DDR_dqs_n),
+    .DDR_dqs_p(DDR_dqs_p),
+    .FIXED_IO_mio(FIXED_IO_mio),
+    .FIXED_IO_ddr_vrn(FIXED_IO_ddr_vrn),
+    .FIXED_IO_ddr_vrp(FIXED_IO_ddr_vrp),
+    .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+    .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
+    .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
     .dac_data_o(dac_data_o)
   );
 
