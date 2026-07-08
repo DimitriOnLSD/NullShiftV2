@@ -53,9 +53,29 @@
 -- COMP_TAG     ------ Begin cut for COMPONENT Declaration ------
 COMPONENT fdm
   PORT (
+    DDR_cas_n : INOUT STD_LOGIC;
+    DDR_cke : INOUT STD_LOGIC;
+    DDR_ck_n : INOUT STD_LOGIC;
+    DDR_ck_p : INOUT STD_LOGIC;
+    DDR_cs_n : INOUT STD_LOGIC;
+    DDR_reset_n : INOUT STD_LOGIC;
+    DDR_odt : INOUT STD_LOGIC;
+    DDR_ras_n : INOUT STD_LOGIC;
+    DDR_we_n : INOUT STD_LOGIC;
+    DDR_ba : INOUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+    DDR_addr : INOUT STD_LOGIC_VECTOR(14 DOWNTO 0);
+    DDR_dm : INOUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    DDR_dq : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    DDR_dqs_n : INOUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    DDR_dqs_p : INOUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+    FIXED_IO_mio : INOUT STD_LOGIC_VECTOR(53 DOWNTO 0);
+    FIXED_IO_ddr_vrn : INOUT STD_LOGIC;
+    FIXED_IO_ddr_vrp : INOUT STD_LOGIC;
+    FIXED_IO_ps_srstb : INOUT STD_LOGIC;
+    FIXED_IO_ps_clk : INOUT STD_LOGIC;
+    FIXED_IO_ps_porb : INOUT STD_LOGIC;
     sys_clock : IN STD_LOGIC;
     reset : IN STD_LOGIC;
-    sel : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
     dac_data_o : OUT STD_LOGIC_VECTOR(23 DOWNTO 0)
   );
 END COMPONENT;
@@ -67,9 +87,29 @@ END COMPONENT;
 -- INST_TAG     ------ Begin cut for INSTANTIATION Template ------
 your_instance_name : fdm
   PORT MAP (
+    DDR_cas_n => DDR_cas_n,
+    DDR_cke => DDR_cke,
+    DDR_ck_n => DDR_ck_n,
+    DDR_ck_p => DDR_ck_p,
+    DDR_cs_n => DDR_cs_n,
+    DDR_reset_n => DDR_reset_n,
+    DDR_odt => DDR_odt,
+    DDR_ras_n => DDR_ras_n,
+    DDR_we_n => DDR_we_n,
+    DDR_ba => DDR_ba,
+    DDR_addr => DDR_addr,
+    DDR_dm => DDR_dm,
+    DDR_dq => DDR_dq,
+    DDR_dqs_n => DDR_dqs_n,
+    DDR_dqs_p => DDR_dqs_p,
+    FIXED_IO_mio => FIXED_IO_mio,
+    FIXED_IO_ddr_vrn => FIXED_IO_ddr_vrn,
+    FIXED_IO_ddr_vrp => FIXED_IO_ddr_vrp,
+    FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
+    FIXED_IO_ps_clk => FIXED_IO_ps_clk,
+    FIXED_IO_ps_porb => FIXED_IO_ps_porb,
     sys_clock => sys_clock,
     reset => reset,
-    sel => sel,
     dac_data_o => dac_data_o
   );
 -- INST_TAG_END ------  End cut for INSTANTIATION Template  ------

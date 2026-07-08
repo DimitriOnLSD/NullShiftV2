@@ -63,7 +63,7 @@
 // coeff_padding: 0
 // num_coeffs: 21
 // coeff_sets: 1
-// reloadable: 0
+// reloadable: 1
 // is_halfband: 0
 // quantization: 0
 // coeff_width: 16
@@ -74,8 +74,8 @@
 // data_width: 40
 // data_fract_width: 0
 // output_rounding_mode: 0
-// output_width: 48
-// accum_width: 48
+// output_width: 61
+// accum_width: 61
 // output_fract_width: 0
 // config_method: 0
 
@@ -96,7 +96,7 @@ static xip_fir_v7_2_config gen_fdm_fir_compiler_0_0_config() {
   config.coeff_padding       = 0;
   config.num_coeffs          = 21;
   config.coeff_sets          = 1;
-  config.reloadable          = 0;
+  config.reloadable          = 1;
   config.is_halfband         = 0;
   config.quantization        = XIP_FIR_INTEGER_COEFF;
   config.coeff_width         = 16;
@@ -108,8 +108,8 @@ static xip_fir_v7_2_config gen_fdm_fir_compiler_0_0_config() {
   config.data_width          = 40;
   config.data_fract_width    = 0;
   config.output_rounding_mode= XIP_FIR_FULL_PRECISION;
-  config.output_width        = 48;
-  config.accum_width         = 48;
+  config.output_width        = 61;
+  config.accum_width         = 61;
   config.output_fract_width  = 0;
   config.config_method       = XIP_FIR_CONFIG_SINGLE;
   return config;

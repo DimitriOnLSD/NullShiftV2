@@ -63,8 +63,17 @@ ENTITY fdm_fir_compiler_0_0 IS
     s_axis_data_tvalid : IN STD_LOGIC;
     s_axis_data_tready : OUT STD_LOGIC;
     s_axis_data_tdata : IN STD_LOGIC_VECTOR(39 DOWNTO 0);
+    s_axis_config_tvalid : IN STD_LOGIC;
+    s_axis_config_tready : OUT STD_LOGIC;
+    s_axis_config_tdata : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
+    s_axis_reload_tvalid : IN STD_LOGIC;
+    s_axis_reload_tready : OUT STD_LOGIC;
+    s_axis_reload_tlast : IN STD_LOGIC;
+    s_axis_reload_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     m_axis_data_tvalid : OUT STD_LOGIC;
-    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0)
+    m_axis_data_tdata : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
+    event_s_reload_tlast_missing : OUT STD_LOGIC;
+    event_s_reload_tlast_unexpected : OUT STD_LOGIC
   );
 END fdm_fir_compiler_0_0;
 
@@ -157,16 +166,16 @@ ARCHITECTURE fdm_fir_compiler_0_0_arch OF fdm_fir_compiler_0_0 IS
       s_axis_config_tvalid : IN STD_LOGIC;
       s_axis_config_tready : OUT STD_LOGIC;
       s_axis_config_tlast : IN STD_LOGIC;
-      s_axis_config_tdata : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      s_axis_config_tdata : IN STD_LOGIC_VECTOR(7 DOWNTO 0);
       s_axis_reload_tvalid : IN STD_LOGIC;
       s_axis_reload_tready : OUT STD_LOGIC;
       s_axis_reload_tlast : IN STD_LOGIC;
-      s_axis_reload_tdata : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+      s_axis_reload_tdata : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
       m_axis_data_tvalid : OUT STD_LOGIC;
       m_axis_data_tready : IN STD_LOGIC;
       m_axis_data_tlast : OUT STD_LOGIC;
       m_axis_data_tuser : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-      m_axis_data_tdata : OUT STD_LOGIC_VECTOR(47 DOWNTO 0);
+      m_axis_data_tdata : OUT STD_LOGIC_VECTOR(63 DOWNTO 0);
       event_s_data_tlast_missing : OUT STD_LOGIC;
       event_s_data_tlast_unexpected : OUT STD_LOGIC;
       event_s_data_chanid_incorrect : OUT STD_LOGIC;
@@ -185,23 +194,40 @@ ARCHITECTURE fdm_fir_compiler_0_0_arch OF fdm_fir_compiler_0_0 IS
   ATTRIBUTE X_INTERFACE_INFO OF aresetn: SIGNAL IS "xilinx.com:signal:reset:1.0 aresetn_intf RST";
   ATTRIBUTE X_INTERFACE_MODE OF aresetn: SIGNAL IS "slave aresetn_intf";
   ATTRIBUTE X_INTERFACE_PARAMETER OF aresetn: SIGNAL IS "XIL_INTERFACENAME aresetn_intf, POLARITY ACTIVE_LOW, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF event_s_reload_tlast_missing: SIGNAL IS "xilinx.com:signal:interrupt:1.0 event_s_reload_tlast_missing_intf INTERRUPT";
+  ATTRIBUTE X_INTERFACE_MODE OF event_s_reload_tlast_missing: SIGNAL IS "master event_s_reload_tlast_missing_intf";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF event_s_reload_tlast_missing: SIGNAL IS "XIL_INTERFACENAME event_s_reload_tlast_missing_intf, SENSITIVITY EDGE_RISING, PortWidth 1";
+  ATTRIBUTE X_INTERFACE_INFO OF event_s_reload_tlast_unexpected: SIGNAL IS "xilinx.com:signal:interrupt:1.0 event_s_reload_tlast_unexpected_intf INTERRUPT";
+  ATTRIBUTE X_INTERFACE_MODE OF event_s_reload_tlast_unexpected: SIGNAL IS "master event_s_reload_tlast_unexpected_intf";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF event_s_reload_tlast_unexpected: SIGNAL IS "XIL_INTERFACENAME event_s_reload_tlast_unexpected_intf, SENSITIVITY EDGE_RISING, PortWidth 1";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF m_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 M_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_MODE OF m_axis_data_tvalid: SIGNAL IS "master M_AXIS_DATA";
-  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 6, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {re" & 
-"solve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 48} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}" & 
-"} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format " & 
-"long minimum {} maximum {}} value 48} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 48} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {" & 
-"resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 48 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate depe" & 
+  ATTRIBUTE X_INTERFACE_PARAMETER OF m_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME M_AXIS_DATA, TDATA_NUM_BYTES 8, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 0, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA xilinx.com:interface:datatypes:1.0 {TDATA {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 61} bitoffset {attribs {re" & 
+"solve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chan} size {attribs {resolve_type generated dependency chan_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency chan_stride format long minimum {} maximum {}} value 64} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}" & 
+"} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 61} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} array_type {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value path} size {attribs {resolve_type generated dependency path_size format long minimum {} maximum {}} value 1} stride {attribs {resolve_type generated dependency path_stride format " & 
+"long minimum {} maximum {}} value 64} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency out_width format long minimum {} maximum {}} value 61} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} real {fixed {fractwidth {attribs {resolve_type generated dependency out_fractwidth format long minimum {} maximum {}} value 0} signed {attribs {" & 
+"resolve_type generated dependency out_signed format bool minimum {} maximum {}} value true}}}}}}}}} TDATA_WIDTH 64 TUSER {datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type automatic dependency {} format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}} value 0} struct {field_data_valid {name {attribs {resolve_type immediate depe" & 
 "ndency {} format string minimum {} maximum {}} value data_valid} enabled {attribs {resolve_type generated dependency data_valid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency data_valid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type immediate dependency {} format long minimum {} maximum {}" & 
 "} value 0}}} field_chanid {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value chanid} enabled {attribs {resolve_type generated dependency chanid_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency chanid_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type " & 
 "generated dependency chanid_bitoffset format long minimum {} maximum {}} value 0} integer {signed {attribs {resolve_type immediate dependency {} format bool minimum {} maximum {}} value false}}}} field_user {name {attribs {resolve_type immediate dependency {} format string minimum {} maximum {}} value user} enabled {attribs {resolve_type generated dependency user_enabled format bool minimum {} maximum {}} value false} datatype {name {attribs {resolve_type immediate dependency {} format string mi" & 
 "nimum {} maximum {}} value {}} bitwidth {attribs {resolve_type generated dependency user_bitwidth format long minimum {} maximum {}} value 0} bitoffset {attribs {resolve_type generated dependency user_bitoffset format long minimum {} maximum {}} value 0}}}}}} TUSER_WIDTH 0}, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_config_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_CONFIG TVALID";
+  ATTRIBUTE X_INTERFACE_MODE OF s_axis_config_tvalid: SIGNAL IS "slave S_AXIS_CONFIG";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_config_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_CONFIG, TDATA_NUM_BYTES 1, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TDATA";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TREADY";
   ATTRIBUTE X_INTERFACE_INFO OF s_axis_data_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_DATA TVALID";
   ATTRIBUTE X_INTERFACE_MODE OF s_axis_data_tvalid: SIGNAL IS "slave S_AXIS_DATA";
   ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_data_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_DATA, TDATA_NUM_BYTES 5, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 0, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_reload_tdata: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_RELOAD TDATA";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_reload_tlast: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_RELOAD TLAST";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_reload_tready: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_RELOAD TREADY";
+  ATTRIBUTE X_INTERFACE_INFO OF s_axis_reload_tvalid: SIGNAL IS "xilinx.com:interface:axis:1.0 S_AXIS_RELOAD TVALID";
+  ATTRIBUTE X_INTERFACE_MODE OF s_axis_reload_tvalid: SIGNAL IS "slave S_AXIS_RELOAD";
+  ATTRIBUTE X_INTERFACE_PARAMETER OF s_axis_reload_tvalid: SIGNAL IS "XIL_INTERFACENAME S_AXIS_RELOAD, TDATA_NUM_BYTES 2, TDEST_WIDTH 0, TID_WIDTH 0, TUSER_WIDTH 0, HAS_TREADY 1, HAS_TSTRB 0, HAS_TKEEP 0, HAS_TLAST 1, FREQ_HZ 100000000, PHASE 0.0, CLK_DOMAIN /clk_wiz_0_clk_out1, LAYERED_METADATA undef, INSERT_VIP 0";
 BEGIN
   U0 : fir_compiler_v7_2_26
     GENERIC MAP (
@@ -209,7 +235,7 @@ BEGIN
       C_ELABORATION_DIR => "./",
       C_COMPONENT_NAME => "fdm_fir_compiler_0_0",
       C_COEF_FILE => "fdm_fir_compiler_0_0.mif",
-      C_COEF_FILE_LINES => 11,
+      C_COEF_FILE_LINES => 22,
       C_DATA_COEFFICIENT_TYPE => 0,
       C_FILTER_TYPE => 0,
       C_INTERP_RATE => 1,
@@ -221,7 +247,7 @@ BEGIN
       C_NUM_CHANNELS => 1,
       C_CHANNEL_PATTERN => "fixed",
       C_ROUND_MODE => 0,
-      C_COEF_RELOAD => 0,
+      C_COEF_RELOAD => 1,
       C_NUM_RELOAD_SLOTS => 1,
       C_COL_MODE => 1,
       C_COL_PIPE_LEN => 4,
@@ -238,10 +264,10 @@ BEGIN
       C_PX_PATH_SRC => "0,1",
       C_DATA_PATH_SIGN => "1,0",
       C_COEF_PATH_SIGN => "0,0",
-      C_ACCUM_PATH_WIDTHS => "29,28",
-      C_OUTPUT_WIDTH => 48,
-      C_OUTPUT_PATH_WIDTHS => "48",
-      C_ACCUM_OP_PATH_WIDTHS => "48",
+      C_ACCUM_PATH_WIDTHS => "42,41",
+      C_OUTPUT_WIDTH => 61,
+      C_OUTPUT_PATH_WIDTHS => "61",
+      C_ACCUM_OP_PATH_WIDTHS => "61",
       C_EXT_MULT_CNFG => "0,1,0,20",
       C_DATA_PATH_PSAMP_SRC => "0",
       C_OP_PATH_PSAMP_SRC => "0",
@@ -255,11 +281,11 @@ BEGIN
       C_IPBUFF_MEMTYPE => 0,
       C_OPBUFF_MEMTYPE => 0,
       C_DATAPATH_MEMTYPE => 0,
-      C_MEM_ARRANGEMENT => 1,
+      C_MEM_ARRANGEMENT => 3,
       C_DATA_MEM_PACKING => 0,
       C_COEF_MEM_PACKING => 0,
       C_FILTS_PACKED => 0,
-      C_LATENCY => 19,
+      C_LATENCY => 23,
       C_HAS_ARESETn => 2,
       C_HAS_ACLKEN => 0,
       C_DATA_HAS_TLAST => 0,
@@ -269,13 +295,13 @@ BEGIN
       C_S_DATA_TUSER_WIDTH => 1,
       C_M_DATA_HAS_TREADY => 0,
       C_M_DATA_HAS_TUSER => 0,
-      C_M_DATA_TDATA_WIDTH => 48,
+      C_M_DATA_TDATA_WIDTH => 64,
       C_M_DATA_TUSER_WIDTH => 1,
-      C_HAS_CONFIG_CHANNEL => 0,
+      C_HAS_CONFIG_CHANNEL => 1,
       C_CONFIG_SYNC_MODE => 0,
       C_CONFIG_PACKET_SIZE => 0,
-      C_CONFIG_TDATA_WIDTH => 1,
-      C_RELOAD_TDATA_WIDTH => 1
+      C_CONFIG_TDATA_WIDTH => 8,
+      C_RELOAD_TDATA_WIDTH => 16
     )
     PORT MAP (
       aresetn => aresetn,
@@ -286,14 +312,18 @@ BEGIN
       s_axis_data_tlast => '0',
       s_axis_data_tuser => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
       s_axis_data_tdata => s_axis_data_tdata,
-      s_axis_config_tvalid => '0',
+      s_axis_config_tvalid => s_axis_config_tvalid,
+      s_axis_config_tready => s_axis_config_tready,
       s_axis_config_tlast => '0',
-      s_axis_config_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
-      s_axis_reload_tvalid => '0',
-      s_axis_reload_tlast => '0',
-      s_axis_reload_tdata => STD_LOGIC_VECTOR(TO_UNSIGNED(0, 1)),
+      s_axis_config_tdata => s_axis_config_tdata,
+      s_axis_reload_tvalid => s_axis_reload_tvalid,
+      s_axis_reload_tready => s_axis_reload_tready,
+      s_axis_reload_tlast => s_axis_reload_tlast,
+      s_axis_reload_tdata => s_axis_reload_tdata,
       m_axis_data_tvalid => m_axis_data_tvalid,
       m_axis_data_tready => '1',
-      m_axis_data_tdata => m_axis_data_tdata
+      m_axis_data_tdata => m_axis_data_tdata,
+      event_s_reload_tlast_missing => event_s_reload_tlast_missing,
+      event_s_reload_tlast_unexpected => event_s_reload_tlast_unexpected
     );
 END fdm_fir_compiler_0_0_arch;

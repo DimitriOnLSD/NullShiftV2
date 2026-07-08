@@ -1,0 +1,29 @@
+WORKFLOW_OPERATION simulation,dialog;
+
+DEFINE_MEMORY_TYPE bin_data_stream_1_MEM_DEVICE [0x00002000] 32;
+DEFINE_MEMORY_TYPE ask_mapper_MEM_DEVICE [0x00002000] 32;
+DEFINE_MEMORY_TYPE bin_data_stream_2_MEM_DEVICE [0x00002000] 32;
+DEFINE_MEMORY_TYPE line_coder_MEM_DEVICE [0x00002000] 32;
+
+ADDRESS_MAP processing_system7_0 ARM 100 processing_system7_0
+   ADDRESS_SPACE bin_data_stream_1_ADDR_SPACE bin_data_stream_1_MEM_DEVICE  [0x40000000:0x40001FFF] bram_ctrl_data_1
+     BUS_BLOCK
+      bin_data_stream_1_BUS_BLK [31:0] INPUT = "fdm_blk_mem_gen_0_0.mem";
+     END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE ask_mapper_ADDR_SPACE ask_mapper_MEM_DEVICE  [0x42000000:0x42001FFF] bram_ctrl_map
+     BUS_BLOCK
+      ask_mapper_BUS_BLK [31:0] INPUT = "fdm_blk_mem_gen_0_1.mem";
+     END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE bin_data_stream_2_ADDR_SPACE bin_data_stream_2_MEM_DEVICE  [0x44000000:0x44001FFF] bram_ctrl_data_2
+     BUS_BLOCK
+      bin_data_stream_2_BUS_BLK [31:0] INPUT = "fdm_bin_data_stream_1_0.mem";
+     END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+   ADDRESS_SPACE line_coder_ADDR_SPACE line_coder_MEM_DEVICE  [0x46000000:0x46001FFF] bram_ctrl_line
+     BUS_BLOCK
+      line_coder_BUS_BLK [31:0] INPUT = "fdm_ask_mapper_0.mem";
+     END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+END_ADDRESS_MAP;
