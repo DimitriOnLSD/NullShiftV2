@@ -10,49 +10,55 @@ Mestrado em Engenharia Eletrotécnica 2025/2026
 
 ## 1. Introdução e Objetivos Globais
 
-O presente relatório detalha o desenvolvimento da Proposta D focada na Modulação ASK/OOK Multiplexada na Frequência. O projeto foi segmentado em duas fases distintas. O Projeto 1 compreende a implementação estática do em hardware recorrendo a Programmable Logic. O Projeto 2 prevê a integração com o Processing System para conferir controlo e configuração dinâmica ao desenho.
+Este relatório descreve o desenvolvimento da Proposta D, que implementa uma Modulação ASK/OOK Multiplexada na Frequência. O projeto está dividido em duas fases: o Projeto 1, que implementa o sistema em hardware estático usando Programmable Logic, e o Projeto 2, que integra o Processing System para dar controlo e configuração dinâmica ao sistema.
 
-Os objetivos globais definidos para o sistema base englobam a implementação dos moduladores ASK e OOK no fabric lógico da FPGA e a técnica da multiplexagem por divisão na frequência FDM. É exigido garantir o controlo independente dos ganhos associados aos diferentes canais e implementar uma secção responsável pela emulação do meio físico de transmissão. Por fim, delineou-se o requisito de conceber um mecanismo de seleção dinâmica para os sinais intermédios de modo a simplificar o processo de validação, efetuando o encaminhamento dos mesmos para a saída física DAC e para inspeção por Integrated Logic Analyzer.
+Os objetivos do sistema base incluem: implementar os moduladores ASK e OOK no fabric da FPGA, aplicar a técnica de multiplexagem por divisão na frequência (FDM), controlar de forma independente o ganho de cada canal, e implementar uma secção que emula o meio físico de transmissão. Também é necessário um mecanismo de seleção dinâmica dos sinais intermédios, para simplificar a validação, encaminhando-os para a saída do DAC e para inspeção por Integrated Logic Analyzer (ILA).
 
-A Figura 1 ilustra o diagrama de blocos arquitetural estipulado para a Proposta D.
+A Figura 1 mostra o diagrama de blocos da arquitetura da Proposta D.
+
 
 ![Diagrama Proposta D](relatorio_diagrama_proposta_d.png)  
-Figura 1: Diagrama conceptual da Proposta D.
+Figura 1: Diagrama da Proposta D.
 
 ## 2. Projeto 1: Implementação em Hardware PL
 
-Durante esta primeira fase, os esforços centraram-se na materialização da arquitetura em lógica programável pura. O trajeto percorrido pelos sinais desde as fontes geradoras até ao encaminhamento de saída foi desenvolvido e avaliado recorrendo ao Vivado. A Figura 2 apresenta a visão global da arquitetura implementada.
+Nesta primeira fase, o foco foi implementar a arquitetura apenas em PL. O caminho do sinal, desde a geração até à saída, foi desenvolvido e testado no Vivado. A Figura 2 mostra a visão global da arquitetura implementada.
+
 
 ![Arquitetura Global](relatorio_arquitetura_0.png)  
 Figura 2: Arquitetura global do sistema.
 
 ### 2.1. Geração de Dados e Moduladores
 
-A fase inicial do circuito concentra-se na geração dos dados em banda base e no seu mapeamento em níveis de amplitude. Esta secção do sistema foi desenhada com recurso a Block RAMs e compiladores DDS, conforme visível na Figura 3. 
+A primeira parte do circuito gera os dados em banda base e mapeia-os em níveis de amplitude diferentes. Esta secção usa Block RAMs e compiladores DDS, como mostra a Figura 3.
+
 
 ![BRAMs e Moduladores](relatorio_arquitetura_1.png)  
 Figura 3: Secção de Geração de Dados com BRAMs e Compiladores DDS.
 
-As Block RAMs foram instanciadas como geradores pseudo-aleatórios. O comportamento cíclico destas fontes é ditado pela iniciação prévia das memórias usando ficheiros de inicialização. No caso do sinal ASK a memória opera em notação hexadecimal de forma a perfazer o padrão pretendido para a modulação. O vetor de inicialização estabelecido foi `0, 1, 2, 3, 0, 3, 1, 2, 1, 0, 3, 2, 3, 2, 1, 0`. A via alocada à modulação OOK é restrita ao espetro binário e contém a sequência `0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1`.
+As Block RAMs funcionam como geradores pseudo aleatórios. O padrão cíclico de cada uma vem do ficheiro de inicialização usado para carregar a memória. Para o sinal ASK, a memória guarda valores em hexadecimal, com o vetor `0, 1, 2, 3, 0, 3, 1, 2, 1, 0, 3, 2, 3, 2, 1, 0`. Para o OOK, a via é binária, com a sequência `0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1`.
 
-A conversão dos níveis e o enquadramento na amplitude esperada decorre num bloco ASK Mapper encarregue de garantir os 4 níveis de sinal para modulação. O Line Coder da arquitetura converte o fluxo de bits binários da via OOK. Nas circunstâncias do Projeto 1, o nível de modulação escolhido para o ASK provém exclusivamente dos ficheiros inseridos e não pode transitar em tempo de execução. O sinal OOK encontra-se restrito ao código de linha NRZ pela falta de um comutador dinâmico de execução.
+Um bloco ASK Mapper converte esses valores nos 4 níveis de amplitude usados na modulação. O Line Coder converte o fluxo binário da via OOK. Neste Projeto 1, o nível do ASK vem só do ficheiro de inicialização e não se pode mudar em tempo real. O OOK está fixo ao código de linha NRZ.
 
-Para acomodar as necessidades da transmissão FDM é imperativo dispor de ondas sinusoidais destinadas a multiplicar o sinal de banda base. Este requisito foi cumprido via geradores Direct Digital Synthesizer. A via do modulador ASK baseia a sua atuação através de uma portadora oscilando a 1 MHz, em contraponto com o sinal OOK que assenta numa portadora ajustada para 2 MHz. 
+A transmissão FDM precisa de portadoras sinusoidais para multiplicar o sinal em banda base. Estas são geradas por blocos Direct Digital Synthesizer (DDS): o ASK usa uma portadora a 1 MHz, e o OOK a 2 MHz.
+
 
 ### 2.2. Ganhos, Multiplicadores e Somador
 
-Após a geração das portadoras, as frequências intersetam-se com as vias advindas das Block RAMs em multiplicadores dedicados, concluindo a etapa da modulação em amplitude. 
+Depois de geradas, as portadoras são multiplicadas pelos sinais das Block RAMs em blocos multiplicadores dedicados, o que completa a modulação em amplitude.
 
 ![Ganhos e Somador FDM](relatorio_arquitetura_2.png)  
 Figura 4: Multiplicadores, blocos de ganho e somador FDM.
 
-O controlo individual dos ganhos dos canais permite o balanceamento de potência na linha FDM e ocorre em simultâneo com a etapa de modulação. Em virtude do isolamento do sistema em lógica estática nesta fase, os ganhos encontram-se dependentes de blocos de constantes e não podem ser dinamicamente configurados. 
+O ganho de cada canal é controlado individualmente para equilibrar a potência na linha FDM, e este controlo acontece na mesma etapa da modulação. Como nesta fase o sistema é todo em lógica estática, os ganhos vêm de blocos de constantes e não podem ser alterados dinamicamente.
 
-A fusão FDM opera-se no domínio linear num somador digital. Atendendo a que o relógio principal pulsa a uma frequência global de 125 MHz, tornou-se impreterível a ativação das prioridades de pipeline interno do somador, aliviando constrangimentos lógicos e assegurando o fecho das restrições temporais.
+
+A junção FDM é feita num somador digital, no domínio linear. Como o relógio principal corre a 125 MHz, foi necessário ativar o pipeline interno do somador, para aliviar a lógica e cumprir os requisitos de timing.
+
 
 ### 2.3. Emulação de Canal e Visualização
 
-Depois da transmissão, o sinal passa por um emulador de canal feito com um filtro FIR. Este IP corre em Single Rate, à taxa de amostragem de 125 MHz. O filtro serve para simular a atenuação de alta frequência que acontece num canal real, e foi desenhado com o algoritmo de Parks-McClellan . Tem 121 coeficientes, de 16 bits, com banda passante até 1.1 MHz e banda de rejeição a começar nos 1.9 MHz. Com isto, o canal ASK de 1 MHz passa sem distorção, enquanto o canal OOK de 2 MHz fica atenuado cerca de 32 dB, simulando as perdas do canal de transmissão.
+Depois da transmissão, o sinal passa por um emulador de canal feito com um filtro FIR. Este IP corre em Single Rate, à taxa de amostragem de 125 MHz. O filtro serve para simular a atenuação de alta frequência que acontece num canal real, e foi desenhado com o algoritmo de Parks-McClellan. Tem 121 coeficientes, de 16 bits, com banda passante até 1.1 MHz e banda de rejeição a começar nos 1.9 MHz. Com isto, o canal ASK (1 MHz) passa sem distorção, enquanto o canal OOK (2 MHz) fica atenuado cerca de 32 dB, simulando as perdas do canal de transmissão.
 
 ![Resposta do Filtro FIR](fir_filter_response.png)  
 Figura 5: Resposta em frequência e impulso do filtro FIR calculado.
@@ -62,19 +68,19 @@ Figura 6: Filtro FIR de emulação de canal, MUX de visualização e ILA.
 
 A multiplexagem de visualização foi materializada a partir de um MUX combinacional desenhado em VHDL para conduzir qualquer sinal requisitado ao barramento principal. O bloco DA2ref, que permitiria a averiguação prática via osciloscópio, estaria posicionado diretamente à frente do MUX caso estivesse implementado nesta fase. Atualmente o circuito apenas encaminha os dados e aciona a visualização em ferramentas de simulação. 
 
-Como exemplos demonstrativos, onde a linha laranja é a saída do MUX, as linhas vermelha e azul são o sinal ASK e OOK com ganhos, respetivamente, apresentam-se os resultados colhidos através de simulação:
+Como exemplos demonstrativos, onde a linha laranja é a saída do MUX, as linhas vermelha e azul são o sinal ASK e OOK com ganhos, respetivamente, apresentam-se os resultados através da simulação:
 
-Quando acionada a segunda entrada do MUX através do bit de seleção 010, observa-se a representação intermédia do sinal ASK patente na Figura 7.
+Quando acionada a segunda entrada do MUX através do bit de seleção 010, observa-se a representação intermédia do sinal ASK na Figura 7.
 
 ![Visualização MUX 2](relatorio_mux_2.png)  
 Figura 7: Visualização do estado lógico quanda seleção é 010.
 
-Ao transitar para a terceira entrada configurada com o bit 011, é possível verificar a via de sinal correspondente ao modulador OOK, tal como visível na Figura 8.
+Ao transitar para a terceira entrada configurada com o bit 011, é possível verificar a via de sinal do modulador OOK, tal como se pode verificar na Figura 8.
 
 ![Visualização MUX 3](relatorio_mux_3.png)  
 Figura 8: Visualização do estado lógico quanda seleção é 011.
 
-Ao selecionar a quarta entrada utilizando o bit 100 na seleção, visualiza-se a via do sinal multiplexado conforme demonstra a Figura 9.
+Ao selecionar a quarta entrada (bit 100 na seleção), visualiza-se a via do sinal multiplexado conforme demonstra a Figura 9.
 
 ![Visualização MUX 4](relatorio_mux_4.png)  
 Figura 9: Visualização do estado lógico quanda seleção é 100.
@@ -85,6 +91,7 @@ Selecionando a última entrada com o bit 101, vemos a componente final da via. A
 Figura 10: Visualização do estado lógico quanda seleção é 101.
 
 Todos os sinais transitam invariavelmente até a um Integrated Logic Analyzer abrindo portas a futuras leituras ao nível da placa de desenvolvimento. Os processos e mapeamentos foram integralmente corroborados recorrendo a ambientes de testbench e as provas de conceito demonstraram a fidelidade estrutural das modulações implementadas.
+
 ## 3. Projeto 2: Integração de Hardware e Software PS
 
 A segunda fase do projeto consiste na inserção do PS e na sua interligação com a PL. Este passo permite o controlo dos parâmetros de modulação e multiplexagem em tempo de execução.
