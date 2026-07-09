@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-//Date        : Wed Jul  8 20:22:34 2026
+//Date        : Thu Jul  9 17:12:47 2026
 //Host        : LENOVO-LOQ-15IRX9 running 64-bit major release  (build 9200)
 //Command     : generate_target fdm.bd
 //Design      : fdm
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=22,numReposBlks=22,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
+(* CORE_GENERATION_INFO = "fdm,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=fdm,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=23,numReposBlks=23,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_board_cnt=2,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "fdm.hwdef" *) 
 module fdm
    (dac_data_o,
     reset,
@@ -47,6 +47,7 @@ module fdm
   wire [2:0]sel;
   wire sys_clock;
   wire [0:0]tvalid_gen_Q;
+  wire [23:0]xlslice_0_Dout;
 
   fdm_blk_mem_gen_0_1 ask_mapper
        (.addra(bin_data_stream_1_douta),
@@ -97,7 +98,7 @@ module fdm
        (.aclk(clk_wiz_0_clk_out1),
         .aresetn(proc_sys_reset_0_peripheral_aresetn),
         .m_axis_data_tdata(fir_compiler_0_m_axis_data_tdata),
-        .s_axis_data_tdata(c_addsub_0_S),
+        .s_axis_data_tdata(xlslice_0_Dout),
         .s_axis_data_tvalid(tvalid_gen_Q));
   fdm_xlconstant_0_0 gain_ask
        (.dout(gain_ask_dout));
@@ -172,4 +173,7 @@ module fdm
        (.CLK(clk_wiz_0_clk_out1),
         .D(const_vcc_dout),
         .Q(tvalid_gen_Q));
+  fdm_xlslice_0_0 xlslice_0
+       (.Din(c_addsub_0_S),
+        .Dout(xlslice_0_Dout));
 endmodule

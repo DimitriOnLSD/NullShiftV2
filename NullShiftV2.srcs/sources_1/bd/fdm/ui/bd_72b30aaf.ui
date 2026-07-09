@@ -1,64 +1,66 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"1.16629",
-   "Default View_TopLeft":"400,183",
+   "Default View_ScaleFactor":"1.28672",
+   "Default View_TopLeft":"2122,243",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0
 #  -string -flagsOSRD
-preplace port port-id_sys_clock -pg 1 -lvl 0 -x -290 -y 280 -defaultsOSRD
-preplace port port-id_reset -pg 1 -lvl 0 -x -290 -y 260 -defaultsOSRD
-preplace portBus sel -pg 1 -lvl 0 -x -290 -y 390 -defaultsOSRD
-preplace portBus dac_data_o -pg 1 -lvl 14 -x 3450 -y -20 -defaultsOSRD
-preplace inst bin_data_stream_1 -pg 1 -lvl 4 -x 750 -y 320 -defaultsOSRD
-preplace inst ask_mapper -pg 1 -lvl 5 -x 1000 -y 370 -defaultsOSRD
-preplace inst ila_0 -pg 1 -lvl 13 -x 3330 -y -220 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x -140 -y 560 -defaultsOSRD
-preplace inst ask_modulator -pg 1 -lvl 6 -x 1270 -y 420 -defaultsOSRD
-preplace inst mult_gen_0 -pg 1 -lvl 7 -x 1580 -y 300 -defaultsOSRD
-preplace inst mult_gen_1 -pg 1 -lvl 8 -x 1840 -y 440 -defaultsOSRD
-preplace inst gain_ask -pg 1 -lvl 7 -x 1580 -y 480 -defaultsOSRD
-preplace inst bin_data_stream_2 -pg 1 -lvl 4 -x 750 -y 770 -defaultsOSRD
-preplace inst line_coder -pg 1 -lvl 5 -x 1000 -y 700 -defaultsOSRD
-preplace inst mult_gen_2 -pg 1 -lvl 7 -x 1580 -y 780 -defaultsOSRD
-preplace inst gain_ook -pg 1 -lvl 7 -x 1580 -y 620 -defaultsOSRD
-preplace inst mult_gen_3 -pg 1 -lvl 8 -x 1840 -y 610 -defaultsOSRD
-preplace inst c_addsub_0 -pg 1 -lvl 9 -x 2070 -y 500 -defaultsOSRD
-preplace inst fir_compiler_0 -pg 1 -lvl 11 -x 2620 -y 480 -defaultsOSRD
-preplace inst tvalid_gen -pg 1 -lvl 10 -x 2280 -y 590 -defaultsOSRD
-preplace inst c_counter_binary_0 -pg 1 -lvl 2 -x 180 -y 300 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 180 -y 500 -defaultsOSRD
-preplace inst mux_0 -pg 1 -lvl 12 -x 3070 -y 530 -defaultsOSRD
-preplace inst const_vcc -pg 1 -lvl 9 -x 2070 -y 650 -defaultsOSRD
-preplace inst baud_rate_gen_0 -pg 1 -lvl 3 -x 490 -y 220 -defaultsOSRD
-preplace inst ook_modulator -pg 1 -lvl 6 -x 1270 -y 710 -defaultsOSRD
-preplace netloc ask_mapper_douta 1 4 9 900 260 NJ 260 1460 380 1680J 320 NJ 320 NJ 320 NJ 320 2870J -320 N
-preplace netloc ask_modulator_m_axis_data_tdata 1 6 7 1430 -300 NJ -300 NJ -300 NJ -300 NJ -300 NJ -300 N
-preplace netloc baud_rate_gen_0_ce_out 1 1 3 10 370 NJ 370 590
-preplace netloc bin_data_stream_1_douta 1 3 10 650 420 850J -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 NJ -340 N
-preplace netloc bin_data_stream_2_doutb 1 3 10 650 630 870J -240 NJ -240 NJ -240 NJ -240 NJ -240 NJ -240 NJ -240 NJ -240 N
-preplace netloc c_addsub_0_S 1 9 4 NJ 500 2390 580 2890 -140 N
-preplace netloc c_counter_binary_0_Q 1 2 11 NJ 300 640 -100 NJ -100 NJ -100 NJ -100 NJ -100 NJ -100 NJ -100 NJ -100 NJ -100 N
-preplace netloc clk_wiz_0_clk_out1 1 1 12 0 380 370 320 610 440 880 470 1130 530 1470 420 1680 520 1970 410 2170 410 2410 380 2910 -360 N
-preplace netloc clk_wiz_0_locked 1 1 8 10 400 390 380 630 450 890 560 NJ 560 NJ 560 1750J 530 N
-preplace netloc const_vcc_dout 1 9 1 2180J 580n
-preplace netloc fir_compiler_0_m_axis_data_tdata 1 11 2 2840 -120 N
-preplace netloc gain_ask_dout 1 7 1 1750 460n
-preplace netloc gain_ook_dout 1 7 1 1680 620n
-preplace netloc line_coder_douta 1 4 9 900 600 NJ 600 1480 400 1690J 330 NJ 330 NJ 330 NJ 330 2900J -220 N
-preplace netloc mult_gen_0_P 1 7 6 1730 -280 NJ -280 NJ -280 NJ -280 N -280 N
-preplace netloc mult_gen_1_P 1 8 5 1950 340 NJ 340 NJ 340 2860 -260 N
-preplace netloc mult_gen_2_P 1 7 6 1710 -180 NJ -180 NJ -180 NJ -180 N -180 N
-preplace netloc mult_gen_3_P 1 8 5 1960 360 NJ 360 NJ 360 2880 -160 N
-preplace netloc mux_0_dac_data_o 1 12 2 3240 -20 N
-preplace netloc ook_modulator_m_axis_data_tdata 1 6 7 1440 -200 NJ -200 NJ -200 NJ -200 NJ -200 NJ -200 N
-preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 9 N 540 NJ 540 NJ 540 NJ 540 NJ 540 1740J 360 1930J 400 NJ 400 2400J
-preplace netloc proc_sys_reset_0_peripheral_reset 1 2 10 380 520 NJ 520 NJ 520 NJ 520 1410J 550 1720J 340 1940J 370 NJ 370 NJ 370 2820J
-preplace netloc reset_1 1 0 2 -230 480 NJ
-preplace netloc sel_1 1 0 12 NJ 390 NJ 390 NJ 390 620J 430 860J 270 NJ 270 1450J 390 1700J 350 NJ 350 NJ 350 NJ 350 2850J
-preplace netloc sys_clock_1 1 0 1 -270J 280n
-preplace netloc tvalid_gen_Q 1 10 1 2420 480n
-levelinfo -pg 1 -290 -140 180 490 750 1000 1270 1580 1840 2070 2280 2620 3070 3330 3450
-pagesize -pg 1 -db -bbox -sgen -410 -480 3620 950
+preplace port port-id_sys_clock -pg 1 -lvl 0 -x 0 -y 460 -defaultsOSRD
+preplace port port-id_reset -pg 1 -lvl 0 -x 0 -y 440 -defaultsOSRD
+preplace portBus sel -pg 1 -lvl 0 -x 0 -y 480 -defaultsOSRD
+preplace portBus dac_data_o -pg 1 -lvl 14 -x 3620 -y 400 -defaultsOSRD
+preplace inst bin_data_stream_1 -pg 1 -lvl 4 -x 950 -y 300 -defaultsOSRD
+preplace inst ask_mapper -pg 1 -lvl 5 -x 1190 -y 320 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 13 -x 3440 -y 200 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 130 -y 510 -defaultsOSRD
+preplace inst ask_modulator -pg 1 -lvl 6 -x 1430 -y 320 -defaultsOSRD
+preplace inst mult_gen_0 -pg 1 -lvl 7 -x 1720 -y 280 -defaultsOSRD
+preplace inst mult_gen_1 -pg 1 -lvl 8 -x 1980 -y 470 -defaultsOSRD
+preplace inst gain_ask -pg 1 -lvl 7 -x 1720 -y 440 -defaultsOSRD
+preplace inst bin_data_stream_2 -pg 1 -lvl 4 -x 950 -y 670 -defaultsOSRD
+preplace inst line_coder -pg 1 -lvl 5 -x 1190 -y 630 -defaultsOSRD
+preplace inst mult_gen_2 -pg 1 -lvl 7 -x 1720 -y 800 -defaultsOSRD
+preplace inst gain_ook -pg 1 -lvl 7 -x 1720 -y 660 -defaultsOSRD
+preplace inst mult_gen_3 -pg 1 -lvl 8 -x 1980 -y 640 -defaultsOSRD
+preplace inst c_addsub_0 -pg 1 -lvl 9 -x 2200 -y 510 -defaultsOSRD
+preplace inst fir_compiler_0 -pg 1 -lvl 12 -x 2940 -y 540 -defaultsOSRD
+preplace inst tvalid_gen -pg 1 -lvl 10 -x 2420 -y 650 -defaultsOSRD
+preplace inst c_counter_binary_0 -pg 1 -lvl 2 -x 420 -y 340 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 2 -x 420 -y 540 -defaultsOSRD
+preplace inst mux_0 -pg 1 -lvl 13 -x 3440 -y 540 -defaultsOSRD
+preplace inst const_vcc -pg 1 -lvl 9 -x 2200 -y 660 -defaultsOSRD
+preplace inst baud_rate_gen_0 -pg 1 -lvl 3 -x 710 -y 310 -defaultsOSRD
+preplace inst ook_modulator -pg 1 -lvl 6 -x 1430 -y 610 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 11 -x 2620 -y 510 -defaultsOSRD
+preplace netloc ask_mapper_douta 1 4 9 1090 220 NJ 220 1620 360 1820J 390 NJ 390 NJ 390 NJ 390 N 390 3220
+preplace netloc ask_modulator_m_axis_data_tdata 1 6 7 1570 180 NJ 180 NJ 180 NJ 180 NJ 180 N 180 3150
+preplace netloc baud_rate_gen_0_ce_out 1 1 3 250 220 NJ 220 810
+preplace netloc bin_data_stream_1_douta 1 3 10 850 400 1050J 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 NJ 170 N 170 3140
+preplace netloc bin_data_stream_2_doutb 1 3 10 850 520 1060J 210 NJ 210 1600J 200 NJ 200 NJ 200 NJ 200 NJ 200 N 200 3180
+preplace netloc c_counter_binary_0_Q 1 2 11 590J 390 840 420 NJ 420 NJ 420 1620J 380 NJ 380 NJ 380 NJ 380 NJ 380 N 380 3240
+preplace netloc clk_wiz_0_clk_out1 1 1 12 240 270 610 230 820 410 1080 430 1290 240 1600 520 1890 560 2100 600 2320 580 N 580 2720 660 3170
+preplace netloc clk_wiz_0_locked 1 1 8 220 430 610 400 830 430 1070 520 NJ 520 1590J 530 1850J 550 2090
+preplace netloc const_vcc_dout 1 9 1 2310J 640n
+preplace netloc fir_compiler_0_m_axis_data_tdata 1 12 1 3260 300n
+preplace netloc gain_ask_dout 1 7 1 1870 440n
+preplace netloc gain_ook_dout 1 7 1 N 660
+preplace netloc line_coder_douta 1 4 9 1090 730 NJ 730 1620 720 NJ 720 NJ 720 NJ 720 NJ 720 N 720 3210
+preplace netloc mult_gen_0_P 1 7 6 1880 190 NJ 190 NJ 190 NJ 190 N 190 3160
+preplace netloc mult_gen_1_P 1 8 5 2070 730 NJ 730 NJ 730 N 730 3200
+preplace netloc mult_gen_2_P 1 7 6 1860 370 NJ 370 NJ 370 NJ 370 N 370 3190
+preplace netloc mult_gen_3_P 1 8 5 2080 750 NJ 750 NJ 750 N 750 3250
+preplace netloc mux_0_dac_data_o 1 12 2 3280 400 3600
+preplace netloc ook_modulator_m_axis_data_tdata 1 6 7 1610 370 1830J 360 NJ 360 NJ 360 NJ 360 N 360 3180
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 2 10 610 530 NJ 530 NJ 530 NJ 530 1570J 540 1830J 740 NJ 740 2300J 570 NJ 570 N
+preplace netloc proc_sys_reset_0_peripheral_reset 1 2 11 600 510 NJ 510 NJ 510 NJ 510 NJ 510 1840J 770 NJ 770 NJ 770 NJ 770 N 770 3270
+preplace netloc reset_1 1 0 2 40 440 230J
+preplace netloc sel_1 1 0 13 20J 580 250J 440 NJ 440 NJ 440 NJ 440 NJ 440 1580J 550 1820J 760 NJ 760 NJ 760 NJ 760 N 760 3280
+preplace netloc sys_clock_1 1 0 1 30J 460n
+preplace netloc tvalid_gen_Q 1 10 2 N 650 2730
+preplace netloc c_addsub_0_S 1 9 4 N 510 2520J 450 2740 650 3230
+preplace netloc xlslice_0_Dout 1 11 1 N 510
+levelinfo -pg 1 0 130 420 710 950 1190 1430 1720 1980 2200 2420 2620 2940 3440 3620
+pagesize -pg 1 -db -bbox -sgen -120 0 3780 880
 "
 }
 {

@@ -51,7 +51,7 @@
 //
 //------------------------------------------------------------------------------
 //
-// coefficients: 6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6
+// coefficients: -32767,-1750,-1769,-1778,-1763,-1733,-1679,-1615,-1519,-1412,-1275,-1125,-943,-748,-522,-281,-11,272,584,909,1260,1620,2008,2401,2822,3242,3702,4150,4636,5117,5645,6114,6579,7132,7622,8141,8642,9157,9654,10152,10638,11116,11580,12032,12467,12886,13285,13666,14023,14358,14668,14956,15212,15445,15647,15823,15960,16068,16161,16191,16209,16191,16161,16068,15960,15823,15647,15445,15212,14956,14668,14358,14023,13666,13285,12886,12467,12032,11580,11116,10638,10152,9654,9157,8642,8141,7622,7132,6579,6114,5645,5117,4636,4150,3702,3242,2822,2401,2008,1620,1260,909,584,272,-11,-281,-522,-748,-943,-1125,-1275,-1412,-1519,-1615,-1679,-1733,-1763,-1778,-1769,-1750,-32767
 // chanpats: 173
 // name: fdm_fir_compiler_0_0
 // data_coefficient_type: 0
@@ -61,7 +61,7 @@
 // decim_rate: 1
 // zero_pack_factor: 1
 // coeff_padding: 0
-// num_coeffs: 21
+// num_coeffs: 121
 // coeff_sets: 1
 // reloadable: 0
 // is_halfband: 0
@@ -71,15 +71,15 @@
 // chan_seq: 0
 // num_channels: 1
 // num_paths: 1
-// data_width: 40
+// data_width: 24
 // data_fract_width: 0
 // output_rounding_mode: 0
-// output_width: 48
-// accum_width: 48
+// output_width: 44
+// accum_width: 44
 // output_fract_width: 0
 // config_method: 0
 
-const double fdm_fir_compiler_0_0_coefficients[21] = {6,0,-4,-3,5,6,-6,-13,7,44,64,44,7,-13,-6,6,5,-3,-4,0,6};
+const double fdm_fir_compiler_0_0_coefficients[121] = {-32767,-1750,-1769,-1778,-1763,-1733,-1679,-1615,-1519,-1412,-1275,-1125,-943,-748,-522,-281,-11,272,584,909,1260,1620,2008,2401,2822,3242,3702,4150,4636,5117,5645,6114,6579,7132,7622,8141,8642,9157,9654,10152,10638,11116,11580,12032,12467,12886,13285,13666,14023,14358,14668,14956,15212,15445,15647,15823,15960,16068,16161,16191,16209,16191,16161,16068,15960,15823,15647,15445,15212,14956,14668,14358,14023,13666,13285,12886,12467,12032,11580,11116,10638,10152,9654,9157,8642,8141,7622,7132,6579,6114,5645,5117,4636,4150,3702,3242,2822,2401,2008,1620,1260,909,584,272,-11,-281,-522,-748,-943,-1125,-1275,-1412,-1519,-1615,-1679,-1733,-1763,-1778,-1769,-1750,-32767};
 
 const xip_fir_v7_2_pattern fdm_fir_compiler_0_0_chanpats[1] = {P_BASIC};
 
@@ -94,7 +94,7 @@ static xip_fir_v7_2_config gen_fdm_fir_compiler_0_0_config() {
   config.zero_pack_factor    = 1;
   config.coeff               = &fdm_fir_compiler_0_0_coefficients[0];
   config.coeff_padding       = 0;
-  config.num_coeffs          = 21;
+  config.num_coeffs          = 121;
   config.coeff_sets          = 1;
   config.reloadable          = 0;
   config.is_halfband         = 0;
@@ -105,11 +105,11 @@ static xip_fir_v7_2_config gen_fdm_fir_compiler_0_0_config() {
   config.num_channels        = 1;
   config.init_pattern        = fdm_fir_compiler_0_0_chanpats[0];
   config.num_paths           = 1;
-  config.data_width          = 40;
+  config.data_width          = 24;
   config.data_fract_width    = 0;
   config.output_rounding_mode= XIP_FIR_FULL_PRECISION;
-  config.output_width        = 48;
-  config.accum_width         = 48;
+  config.output_width        = 44;
+  config.accum_width         = 44;
   config.output_fract_width  = 0;
   config.config_method       = XIP_FIR_CONFIG_SINGLE;
   return config;

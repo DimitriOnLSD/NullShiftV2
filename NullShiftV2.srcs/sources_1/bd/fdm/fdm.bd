@@ -32,7 +32,8 @@
       "mux_0": "",
       "const_vcc": "",
       "baud_rate_gen_0": "",
-      "ook_modulator": ""
+      "ook_modulator": "",
+      "xlslice_0": ""
     },
     "ports": {
       "sys_clock": {
@@ -448,11 +449,34 @@
           "Clock_Frequency": {
             "value": "125.0"
           },
+          "CoefficientVector": {
+            "value": [
+              "-32767, -1750, -1769, -1778, -1763, -1733, -1679, -1615, -1519, -1412, -1275, -1125, -943, -748, -522, -281, -11, 272, 584, 909, 1260, 1620, 2008, 2401, 2822, 3242, 3702, 4150, 4636, 5117, 5645, 6114,",
+              "6579, 7132, 7622, 8141, 8642, 9157, 9654, 10152, 10638, 11116, 11580, 12032, 12467, 12886, 13285, 13666, 14023, 14358, 14668, 14956, 15212, 15445, 15647, 15823, 15960, 16068, 16161, 16191, 16209,",
+              "16191, 16161, 16068, 15960, 15823, 15647, 15445, 15212, 14956, 14668, 14358, 14023, 13666, 13285, 12886, 12467, 12032, 11580, 11116, 10638, 10152, 9654, 9157, 8642, 8141, 7622, 7132, 6579, 6114, 5645,",
+              "5117, 4636, 4150, 3702, 3242, 2822, 2401, 2008, 1620, 1260, 909, 584, 272, -11, -281, -522, -748, -943, -1125, -1275, -1412, -1519, -1615, -1679, -1733, -1763, -1778, -1769, -1750, -32767"
+            ]
+          },
+          "Coefficient_Fractional_Bits": {
+            "value": "0"
+          },
+          "Coefficient_Sets": {
+            "value": "1"
+          },
+          "Coefficient_Sign": {
+            "value": "Signed"
+          },
           "Coefficient_Structure": {
             "value": "Inferred"
           },
+          "Coefficient_Width": {
+            "value": "16"
+          },
+          "ColumnConfig": {
+            "value": "20,20,21"
+          },
           "Data_Width": {
-            "value": "40"
+            "value": "24"
           },
           "Has_ARESETn": {
             "value": "true"
@@ -461,7 +485,10 @@
             "value": "Full_Precision"
           },
           "Output_Width": {
-            "value": "48"
+            "value": "44"
+          },
+          "Quantization": {
+            "value": "Integer_Coefficients"
           },
           "Sample_Frequency": {
             "value": "125.0"
@@ -712,6 +739,25 @@
             "value": "10100011110101110000101"
           }
         }
+      },
+      "xlslice_0": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "ip_revision": "5",
+        "xci_name": "fdm_xlslice_0_0",
+        "xci_path": "ip\\fdm_xlslice_0_0\\fdm_xlslice_0_0.xci",
+        "inst_hier_path": "xlslice_0",
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "39"
+          },
+          "DIN_TO": {
+            "value": "16"
+          },
+          "DIN_WIDTH": {
+            "value": "40"
+          }
+        }
       }
     },
     "nets": {
@@ -753,9 +799,9 @@
       "c_addsub_0_S": {
         "ports": [
           "c_addsub_0/S",
-          "ila_0/probe10",
-          "fir_compiler_0/s_axis_data_tdata",
-          "mux_0/fdm_sum_i"
+          "xlslice_0/Din",
+          "mux_0/fdm_sum_i",
+          "ila_0/probe10"
         ]
       },
       "c_counter_binary_0_Q": {
@@ -916,6 +962,12 @@
         "ports": [
           "tvalid_gen/Q",
           "fir_compiler_0/s_axis_data_tvalid"
+        ]
+      },
+      "xlslice_0_Dout": {
+        "ports": [
+          "xlslice_0/Dout",
+          "fir_compiler_0/s_axis_data_tdata"
         ]
       }
     }
